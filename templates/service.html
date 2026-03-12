@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Service & Community — Enrico Daga{% endblock %}
+{% block description %}Invited talks, academic service, and community roles by Enrico Daga.{% endblock %}
+
+{% block content %}
+<div class="page-hero">
+  <div class="page-hero-label">Service &amp; Community</div>
+  <h1>Talks &amp; <em>Service</em></h1>
+  <p class="page-hero-sub">Invited presentations, editorial roles, programme committees, and community leadership.</p>
+</div>
+
+<!-- Invited Talks -->
+<div class="section">
+  <div class="section-label">Talks &amp; Lectures</div>
+  <h2 style="margin-bottom: 2rem;">Invited Presentations</h2>
+  <div class="talks-list">
+    {% for t in talks %}
+    <div class="talk-item">
+      <div class="talk-date">{{ t.date[:10] }}</div>
+      <div>
+        <div class="talk-title">{{ t.title }}</div>
+        <div class="talk-event">{{ t.event }}{% if t.location %} · {{ t.location }}{% endif %}</div>
+        {% if t.slides or t.video %}
+        <div class="talk-links">
+          {% if t.slides %}<a href="{{ t.slides }}" target="_blank" rel="noopener">Slides ↗</a>{% endif %}
+          {% if t.video %}<a href="{{ t.video }}" target="_blank" rel="noopener">Video ↗</a>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Academic Service -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">Academic Service</div>
+    <h2 style="margin-bottom: 1.5rem;">Roles &amp; Committees</h2>
+    <div class="prose">
+      {{ service | safe }}
+    </div>
+  </div>
+</div>
+{% endblock %}

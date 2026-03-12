@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ── HERO ── -->
+<div class="hero" style="padding: 7rem 3.5rem 5rem; display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; animation: fadeUp 0.8s ease 0.1s both;">
+
+  <div class="hero-left">
+    <div class="hero-label" style="display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 500; color: var(--teal); letter-spacing: 0.06em; margin-bottom: 1.8rem;">
+      <span style="width: 28px; height: 1.5px; background: linear-gradient(90deg, var(--teal-bright), var(--teal)); border-radius: 2px; flex-shrink: 0; display: inline-block;"></span>
+      Senior Research Fellow · KMi, The Open University
+    </div>
+
+    <h1 style="font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink);">
+      Enrico<br><span style="font-style: italic; color: var(--teal-deep);">Daga</span>
+    </h1>
+
+    <p style="margin-top: 1.8rem; font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--ink-mid); max-width: 52ch;">
+      Building <strong style="font-weight: 500; color: var(--ink);">knowledge infrastructure</strong> for culture, science, and the open web —
+      through semantic technologies, knowledge graphs, and open data.
+    </p>
+
+    <div style="margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+      <span class="pill">Knowledge Media Institute</span>
+      <span class="pill">Visiting Prof. · Univ. of Turin</span>
+      <span class="pill">W3C Data Façades Chair</span>
+      <span class="pill">DARIAH AI &amp; Music</span>
+    </div>
+
+    <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+      <a href="research.html" class="btn-primary">Research &amp; Projects</a>
+      <a href="publications.html" class="btn-outline">Publications</a>
+      <a href="assets/cv.pdf" class="btn-text" target="_blank">Download CV ↓</a>
+    </div>
+  </div>
+
+  <!-- Hero card -->
+  <div style="background: var(--off); border: 1px solid var(--rule); border-radius: var(--radius); padding: 2rem; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(18,196,190,0.12) 0%, transparent 70%); pointer-events: none;"></div>
+
+    <!-- Profile row -->
+    <div style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--rule);">
+      <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--teal-subtle), var(--teal-glow)); border: 2px solid var(--rule); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;">
+        <img src="assets/img/profile.jpg" alt="Enrico Daga" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div style="font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--ink);">Enrico Daga, PhD</div>
+        <div style="font-size: 0.73rem; color: var(--teal); margin-top: 0.1rem; font-family: var(--mono);">enrico.daga@open.ac.uk</div>
+      </div>
+    </div>
+
+    <!-- News -->
+    <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1rem;">Latest Highlights</div>
+    <div>
+      {% for item in talks %}
+      <div style="padding: 0.85rem 0; border-top: 1px solid var(--rule); display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span class="news-chip chip-talk">Talk</span>
+        <div style="font-size: 0.8rem; line-height: 1.45; color: var(--ink);">
+          {{ item.title }}
+          <small style="display: block; font-size: 0.7rem; color: var(--ink-soft); margin-top: 0.1rem;">{{ item.event }} · {{ item.date[:7] }}</small>
+        </div>
+      </div>
+      {% endfor %}
+      <div style="padding: 0.85rem 0; border-top: 1px solid var(--rule); display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span class="news-chip chip-new">New</span>
+        <div style="font-size: 0.8rem; line-height: 1.45; color: var(--ink);">ClimateSense project launched
+          <small style="display: block; font-size: 0.7rem; color: var(--ink-soft); margin-top: 0.1rem;">CHIST-ERA / EPSRC · 2025–present</small>
+        </div>
+      </div>
+      <div style="padding: 0.85rem 0; border-top: 1px solid var(--rule); display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span class="news-chip chip-role">Role</span>
+        <div style="font-size: 0.8rem; line-height: 1.45; color: var(--ink);">Chair, W3C Data Façades Community Group
+          <small style="display: block; font-size: 0.7rem; color: var(--ink-soft); margin-top: 0.1rem;">From September 2025</small>
+        </div>
+      </div>
+      <div style="padding: 0.85rem 0; border-top: 1px solid var(--rule); display: flex; gap: 0.75rem; align-items: flex-start;">
+        <span class="news-chip chip-phd">PhD</span>
+        <div style="font-size: 0.8rem; line-height: 1.45; color: var(--ink);">Two completions: Paula Reyero-Lobo &amp; David Goddard
+          <small style="display: block; font-size: 0.7rem; color: var(--ink-soft); margin-top: 0.1rem;">Awarded March &amp; May 2025</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── THEMES ── -->
+<div class="divider"></div>
+<div class="themes">
+  <span class="themes-label">Research themes</span>
+  <div class="themes-tags">
+    <span class="theme-tag">Knowledge Graphs</span>
+    <span class="theme-tag">Semantic Web</span>
+    <span class="theme-tag">Cultural Heritage</span>
+    <span class="theme-tag">Smart Cities</span>
+    <span class="theme-tag">Digital Humanities</span>
+    <span class="theme-tag">Linked Open Data</span>
+    <span class="theme-tag">Healthcare</span>
+    <span class="theme-tag">Computational Policies</span>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ── PROJECTS ── -->
+<div class="section">
+  <div class="section-top">
+    <div>
+      <div class="section-label">Research</div>
+      <h2>Selected Projects</h2>
+    </div>
+    <a href="research.html" class="see-all">All projects →</a>
+  </div>
+  <div class="projects-grid">
+    {% for p in projects[:6] %}
+    <a href="{{ p.url or '#' }}" class="project-card" {% if p.url %}target="_blank" rel="noopener"{% endif %}>
+      <div class="project-meta">
+        <span class="project-funder">{{ p.funder }}</span>
+        <span class="project-years">{{ p.start }}{% if p.end %}–{{ p.end }}{% else %}–now{% endif %}</span>
+      </div>
+      <div class="project-name">{{ p.name }}</div>
+      <div class="project-role">{{ p.role }}</div>
+      <div class="project-desc">{{ p.description }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- ── PUBLICATIONS ── -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-top">
+      <div>
+        <div class="section-label">Output</div>
+        <h2>Recent Publications</h2>
+      </div>
+      <a href="publications.html" class="see-all">Full list →</a>
+    </div>
+    <div class="pub-list">
+      {% set shown = [] %}
+      {% for etype in ['article', 'inproceedings'] %}
+        {% for entry in bib_groups.get(etype, [])[:3] %}
+          {% if shown|length < 5 %}
+            {% set _ = shown.append(entry) %}
+            <div class="pub-item">
+              <div class="pub-year">{{ entry.year }}</div>
+              <div>
+                <div class="pub-title">
+                  {% if entry.url %}<a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}
+                </div>
+                <div class="pub-venue">{{ entry.get('journal', entry.get('booktitle', '')) }}</div>
+              </div>
+              <span class="pub-badge {% if etype == 'article' %}badge-j{% else %}badge-c{% endif %}">
+                {% if etype == 'article' %}Journal{% else %}Conference{% endif %}
+              </span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- ── TOOLS ── -->
+<div class="section">
+  <div class="section-top">
+    <div>
+      <div class="section-label">Software &amp; Tools</div>
+      <h2>Research Software</h2>
+    </div>
+    <a href="research.html#tools" class="see-all">All tools →</a>
+  </div>
+  <div class="tools-grid">
+    {% for t in tools %}
+    <a href="{{ t.url or t.github or '#' }}" class="tool-card" target="_blank" rel="noopener">
+      <div class="tool-glyph">{ }</div>
+      <div class="tool-name">{{ t.name }}</div>
+      <div class="tool-desc">{{ t.description }}</div>
+      <span class="tool-url">{{ t.url or t.github or 'GitHub' }} ↗</span>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

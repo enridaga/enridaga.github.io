@@ -1,0 +1,79 @@
+[
+  {
+    "name": "ClimateSense",
+    "acronym": "ClimateSense",
+    "funder": "CHIST-ERA / EPSRC",
+    "grant": "",
+    "role": "Co-Investigator",
+    "start": "2025",
+    "end": "",
+    "description": "Semantic sensing and knowledge integration for heterogeneous climate data streams.",
+    "url": ""
+  },
+  {
+    "name": "MultiPoD",
+    "acronym": "MultiPoD",
+    "funder": "Horizon Europe",
+    "grant": "",
+    "role": "Co-Investigator",
+    "start": "2025",
+    "end": "",
+    "description": "Multi-perspective knowledge graphs bridging policy, open data, and democratic participation.",
+    "url": ""
+  },
+  {
+    "name": "Polifonia",
+    "acronym": "Polifonia",
+    "funder": "EU H2020",
+    "grant": "£376,972",
+    "role": "Principal Investigator (OU) & Technical Director",
+    "start": "2021",
+    "end": "2024",
+    "description": "A knowledge graph network of musical heritage sources across Europe — connecting archives, scores, and listening records.",
+    "url": "http://www.polifonia-project.eu"
+  },
+  {
+    "name": "SPICE",
+    "acronym": "SPICE",
+    "funder": "EU H2020",
+    "grant": "",
+    "role": "Researcher",
+    "start": "2020",
+    "end": "2023",
+    "description": "Social cohesion, participation and inclusion through cultural engagement and citizen curation.",
+    "url": ""
+  },
+  {
+    "name": "Listening Experience Database",
+    "acronym": "LED",
+    "funder": "AHRC",
+    "grant": "",
+    "role": "Technical Lead",
+    "start": "2017",
+    "end": "2020",
+    "description": "The Listening Experience Database — a linked data resource for music history and reception research.",
+    "url": "https://led.kmi.open.ac.uk"
+  },
+  {
+    "name": "MK:Smart / MK:5G",
+    "acronym": "MK:Smart",
+    "funder": "Innovate UK / HEFCE",
+    "grant": "",
+    "role": "Researcher",
+    "start": "2014",
+    "end": "2018",
+    "description": "Smart city data infrastructure for Milton Keynes — integrating urban sensors, open data, and citizen services.",
+    "url": ""
+  },
+  {
+    "name": "OU Open Knowledge Graph",
+    "acronym": "OUOKG",
+    "funder": "The Open University",
+    "grant": "",
+    "role": "Director",
+    "start": "2010",
+    "end": "",
+    "description": "Open linked data platform powering OU's institutional knowledge and teaching infrastructure.",
+    "url": "https://data.open.ac.uk"
+  }
+]

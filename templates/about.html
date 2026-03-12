@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}About — Enrico Daga{% endblock %}
+{% block description %}Biography and background of Enrico Daga, Senior Research Fellow at KMi, The Open University.{% endblock %}
+
+{% block content %}
+<div class="page-hero">
+  <div class="page-hero-label">About</div>
+  <h1>Enrico Daga, <em>PhD</em></h1>
+  <p class="page-hero-sub">Senior Research Fellow · Knowledge Media Institute · The Open University</p>
+</div>
+
+<div class="section">
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+</div>
+{% endblock %}

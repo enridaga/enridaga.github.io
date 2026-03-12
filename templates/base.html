@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Enrico Daga — Senior Research Fellow, The Open University{% endblock %}</title>
+  <meta name="description" content="{% block description %}Personal academic website of Enrico Daga, Senior Research Fellow at the Knowledge Media Institute, The Open University.{% endblock %}">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="{% block og_title %}Enrico Daga{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Senior Research Fellow · Knowledge Media Institute, The Open University{% endblock %}">
+  <meta property="og:image"       content="assets/img/profile.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-dot"></span>
+    Enrico Daga
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+    <li><a href="service.html">Service</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── PAGE CONTENT ── -->
+{% block content %}{% endblock %}
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">
+    <strong>Enrico Daga</strong><br>
+    Knowledge Media Institute · The Open University
+  </div>
+  <ul class="footer-links">
+    <li><a href="https://github.com/enridaga" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="https://orcid.org/0000-0002-3184-5407" target="_blank" rel="noopener">ORCID</a></li>
+    <li><a href="https://www.linkedin.com/in/enridaga/" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://www.slideshare.net/enridaga" target="_blank" rel="noopener">SlideShare</a></li>
+    <li><a href="https://kmi.open.ac.uk/people/member/enrico-daga" target="_blank" rel="noopener">KMi Profile</a></li>
+  </ul>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

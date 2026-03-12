@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2025-12-10",
+    "title": "Humanities Knowledge Graphs: opportunities and challenges with gen-AI",
+    "event": "Invited Seminar, University of Turin",
+    "location": "Turin, Italy",
+    "slides": "",
+    "video": ""
+  },
+  {
+    "date": "2023-07-01",
+    "title": "Knowledge Organisation and the Semantic Web",
+    "event": "ISKO UK Conference (Keynote)",
+    "location": "Glasgow, UK",
+    "slides": "https://www.slideshare.net/enridaga",
+    "video": ""
+  },
+  {
+    "date": "2022-05-15",
+    "title": "Smart Cities and Open Data: a Knowledge Graph perspective",
+    "event": "OECD Expert Interview — Smart City",
+    "location": "Online",
+    "slides": "",
+    "video": ""
+  },
+  {
+    "date": "2022-02-10",
+    "title": "SPARQL Anything: querying heterogeneous data with SPARQL",
+    "event": "W3C Knowledge Graph Construction Community Group",
+    "location": "Online",
+    "slides": "https://www.slideshare.net/enridaga",
+    "video": ""
+  },
+  {
+    "date": "2020-01-15",
+    "title": "Knowledge Graphs for Cultural Heritage",
+    "event": "Keynote, Amity University",
+    "location": "India (Online)",
+    "slides": "https://www.slideshare.net/enridaga",
+    "video": ""
+  }
+]

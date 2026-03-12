@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Teaching & Supervision — Enrico Daga{% endblock %}
+{% block description %}Teaching activities and PhD supervision by Enrico Daga.{% endblock %}
+
+{% block content %}
+<div class="page-hero">
+  <div class="page-hero-label">Teaching &amp; Supervision</div>
+  <h1>Teaching &amp; <em>Supervision</em></h1>
+  <p class="page-hero-sub">Courses, lectures, and PhD students past and present.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Teaching</div>
+  <h2 style="margin-bottom: 1.5rem;">Courses &amp; Lectures</h2>
+  <div class="prose">
+    {{ teaching | safe }}
+  </div>
+</div>
+
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">Supervision</div>
+    <h2 style="margin-bottom: 1.5rem;">PhD Students</h2>
+    <div class="prose">
+      {{ supervision | safe }}
+    </div>
+  </div>
+</div>
+{% endblock %}

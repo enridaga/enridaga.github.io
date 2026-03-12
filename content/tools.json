@@ -1,0 +1,30 @@
+[
+  {
+    "name": "SPARQL Anything",
+    "description": "A unified framework for querying heterogeneous data formats using SPARQL — treating any data source as a virtual RDF graph via a façade pattern.",
+    "url": "https://sparql.anything.cc",
+    "github": "https://github.com/SPARQL-Anything/sparql.anything",
+    "publications": ["asprino2023knowledge"]
+  },
+  {
+    "name": "data.open.ac.uk",
+    "description": "The Open University's open knowledge graph — an institutional linked data platform powering student services and OpenLearn content discovery.",
+    "url": "https://data.open.ac.uk",
+    "github": "",
+    "publications": []
+  },
+  {
+    "name": "BASIL",
+    "description": "Build RESTful web APIs on top of SPARQL endpoints with minimal configuration — mapping HTTP requests to parameterised SPARQL queries.",
+    "url": "",
+    "github": "https://github.com/the-open-university/basil",
+    "publications": []
+  },
+  {
+    "name": "Apache Stanbol",
+    "description": "Contribution to the IKS project — a reusable set of semantic content management services for the web, now an Apache Software Foundation project.",
+    "url": "https://stanbol.apache.org",
+    "github": "",
+    "publications": []
+  }
+]

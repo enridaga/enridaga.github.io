@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Publications — Enrico Daga{% endblock %}
+{% block description %}Full list of peer-reviewed publications by Enrico Daga.{% endblock %}
+
+{% block extra_head %}
+<style>
+  .filter-bar {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .filter-btn {
+    font-family: var(--mono);
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover,
+  .filter-btn.filter-active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-hero">
+  <div class="page-hero-label">Publications</div>
+  <h1>Research <em>Output</em></h1>
+  <p class="page-hero-sub">Peer-reviewed journal articles, conference papers, book chapters, and more.</p>
+</div>
+
+<div class="section">
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <button class="filter-btn filter-active" data-pub-filter="all">All</button>
+    {% for label, entries in pub_sections %}
+    <button class="filter-btn" data-pub-filter="{{ label | lower | replace(' ', '-') }}">{{ label }}</button>
+    {% endfor %}
+  </div>
+
+  <!-- Publication groups -->
+  {% for label, entries in pub_sections %}
+  <div data-pub-type="{{ label | lower | replace(' ', '-') }}">
+    <div class="pub-type-heading">{{ label }}</div>
+    <div class="pub-list">
+      {% for entry in entries %}
+      <div class="pub-item">
+        <div class="pub-year">{{ entry.year }}</div>
+        <div>
+          <div class="pub-title">
+            {% if entry.url %}
+              <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.title }}</a>
+            {% elif entry.doi %}
+              <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener">{{ entry.title }}</a>
+            {% else %}
+              {{ entry.title }}
+            {% endif %}
+          </div>
+          <div class="pub-venue">
+            {{ entry.get('journal', entry.get('booktitle', entry.get('school', ''))) }}
+            {% if entry.get('author') %}· {{ entry.author[:80] }}{% if entry.author|length > 80 %}…{% endif %}{% endif %}
+          </div>
+        </div>
+        <span class="pub-badge
+          {%- if entry.ENTRYTYPE == 'article' %} badge-j
+          {%- elif entry.ENTRYTYPE == 'inproceedings' %} badge-c
+          {%- elif entry.ENTRYTYPE == 'phdthesis' %} badge-t
+          {%- else %} badge-other{%- endif %}">
+          {%- if entry.ENTRYTYPE == 'article' %}Journal
+          {%- elif entry.ENTRYTYPE == 'inproceedings' %}Conference
+          {%- elif entry.ENTRYTYPE == 'incollection' %}Chapter
+          {%- elif entry.ENTRYTYPE == 'phdthesis' %}Thesis
+          {%- else %}Other{%- endif %}
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+{% endblock %}
