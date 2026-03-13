@@ -1,64 +1,718 @@
 % publications.bib — Enrico Daga
-% Add all publications here. Build script groups by ENTRYTYPE and sorts by year descending.
-% Flag important entries with: featured = {true}
+% Source: scholar-profile.bib, cleaned and enriched.
+% Rules:
+%   - Deliverables (D1.x, D7.x etc.) excluded
+%   - Entries with no year excluded
+%   - Duplicates removed (kept best-formatted version)
+%   - DOIs added where found
+%   - featured = {true} on ACM TOIT, Semantic Web Journal articles
+% Sorted by year descending within each section; build script re-sorts automatically.
+
+% ──────────────────────────────────────────────
+% JOURNAL ARTICLES
+% ──────────────────────────────────────────────
+
+@article{daga2025process,
+  author   = {Daga, Enrico},
+  title    = {Process Knowledge Graphs ({PKG}): Towards Unpacking and Repacking {AI} Applications},
+  journal  = {Journal of Web Semantics},
+  year     = {2025},
+  volume   = {84},
+  pages    = {100846},
+  doi      = {10.1016/j.websem.2024.100846},
+  url      = {https://doi.org/10.1016/j.websem.2024.100846}
+}
+
+@article{motta2025epistemology,
+  author   = {Motta, Enrico and Daga, Enrico and Gangemi, Aldo and Gjelsvik, Maia Lunde and Osborne, Francesco and Salatino, Angelo},
+  title    = {The Epistemology of Fine-Grained News Classification},
+  journal  = {Semantic Web},
+  year     = {2025},
+  volume   = {16},
+  number   = {3},
+  doi      = {10.3233/SW-243568},
+  url      = {https://doi.org/10.3233/SW-243568},
+  featured = {true}
+}
+
+@article{warren2024path,
+  author   = {Warren, Paul and Mulholland, Paul and Daga, Enrico and Asprino, Luigi},
+  title    = {Path-Based and Triplification Approaches to Mapping Data into {RDF}: User Behaviours and Recommendations},
+  journal  = {Semantic Web},
+  year     = {2024},
+  volume   = {15},
+  number   = {6},
+  pages    = {2479--2505},
+  doi      = {10.3233/SW-243585},
+  url      = {https://doi.org/10.3233/SW-243585},
+  featured = {true}
+}
+
+@article{carvalho2024integrating,
+  author   = {Carvalho, Jason and Daga, Enrico and Mulholland, Paul and Asprino, Luigi and Uwasomba, Chukwudi and Daquino, Marilena and Gangemi, Aldo and Maguire, Mark and Stoneman, Adam},
+  title    = {Integrating Citizen Experiences in Cultural Heritage Archives with a Linked Non-Open Data Hub},
+  journal  = {ACM Journal on Computing and Cultural Heritage},
+  year     = {2024},
+  volume   = {17},
+  number   = {4},
+  pages    = {1--39},
+  doi      = {10.1145/3649887},
+  url      = {https://doi.org/10.1145/3649887}
+}
+
+@article{daga2024data,
+  author   = {Daga, Enrico and Groth, Paul},
+  title    = {Data Journeys: Explaining {AI} Workflows through Abstraction},
+  journal  = {Semantic Web},
+  year     = {2024},
+  volume   = {15},
+  number   = {4},
+  pages    = {1057--1083},
+  doi      = {10.3233/SW-233407},
+  url      = {https://doi.org/10.3233/SW-233407},
+  featured = {true}
+}
+
+@article{reyero2023semantic,
+  author   = {Reyero Lobo, Paula and Daga, Enrico and Alani, Harith and Fernandez, Miriam},
+  title    = {Semantic Web Technologies and Bias in Artificial Intelligence: A Systematic Literature Review},
+  journal  = {Semantic Web},
+  year     = {2023},
+  volume   = {14},
+  number   = {4},
+  pages    = {745--770},
+  doi      = {10.3233/SW-223041},
+  url      = {https://doi.org/10.3233/SW-223041},
+  featured = {true}
+}
 
 @article{asprino2023knowledge,
-  author  = {Asprino, Luigi and Daga, Enrico and Gangemi, Aldo and Mulholland, Paul},
-  title   = {Knowledge Graph Construction with a Façade: A Unified Method to Access Heterogeneous Data Sources on the Web},
-  journal = {ACM Transactions on Internet Technology},
-  year    = {2023},
-  volume  = {23},
-  number  = {1},
-  doi     = {10.1145/3555312},
-  url     = {https://doi.org/10.1145/3555312},
+  author   = {Asprino, Luigi and Daga, Enrico and Gangemi, Aldo and Mulholland, Paul},
+  title    = {Knowledge Graph Construction with a Fa\c{c}ade: A Unified Method to Access Heterogeneous Data Sources on the Web},
+  journal  = {ACM Transactions on Internet Technology},
+  year     = {2023},
+  volume   = {23},
+  number   = {1},
+  doi      = {10.1145/3555312},
+  url      = {https://doi.org/10.1145/3555312},
   featured = {true}
 }
 
-@article{daga2023melody,
-  author  = {Daga, Enrico and others},
-  title   = {Melody Harmonisation with Controllable Melodic Tension},
-  journal = {ACM Journal on Computing and Cultural Heritage},
-  year    = {2023},
-  doi     = {10.1145/3577202},
-  url     = {https://doi.org/10.1145/3577202}
+@article{daquino2023clef,
+  author   = {Daquino, Marilena and Wigham, Mari and Daga, Enrico and Giagnolini, Lucia and Tomasi, Francesca},
+  title    = {{CLEF}: A Linked Open Data Native System for Crowdsourcing},
+  journal  = {ACM Journal on Computing and Cultural Heritage},
+  year     = {2023},
+  volume   = {16},
+  number   = {3},
+  pages    = {1--17},
+  doi      = {10.1145/3589737},
+  url      = {https://doi.org/10.1145/3589737}
 }
 
-@article{daga2021sparql,
-  author  = {Daga, Enrico and Asprino, Luigi and Mulholland, Paul and Gangemi, Aldo},
-  title   = {SPARQL Anything: A Façade for Querying Non-RDF Data Sources on the Web},
-  journal = {Semantic Web Journal},
-  year    = {2022},
-  url     = {https://sparql.anything.cc},
+@article{alam2022editorial,
+  author   = {Alam, Mehwish and De Boer, Victor and Daga, Enrico and Van Erp, Marieke and Hyv{\"o}nen, Eero and Mero{\~n}o-Pe{\~n}uela, Albert},
+  title    = {Editorial of the Special Issue on Cultural Heritage and Semantic Web},
+  journal  = {Semantic Web},
+  year     = {2022},
+  volume   = {14},
+  number   = {2},
+  pages    = {155--158},
+  doi      = {10.3233/SW-223187},
+  url      = {https://doi.org/10.3233/SW-223187}
+}
+
+@article{daga2022integrating,
+  author   = {Daga, Enrico and Asprino, Luigi and Damiano, Rossana and Daquino, Marilena and Agudo, Belen Diaz and Gangemi, Aldo and Kuflik, Tsvi and Lieto, Antonio and Maguire, Mark and Marras, Anna Maria and others},
+  title    = {Integrating Citizen Experiences in Cultural Heritage Archives: Requirements, State of the Art, and Challenges},
+  journal  = {ACM Journal on Computing and Cultural Heritage},
+  year     = {2022},
+  volume   = {15},
+  number   = {1},
+  pages    = {1--35},
+  doi      = {10.1145/3479010},
+  url      = {https://doi.org/10.1145/3479010}
+}
+
+@article{asprino2022materialisation,
+  author   = {Asprino, Luigi and Daga, Enrico and Dowdy, Justin and Gangemi, Aldo and Mulholland, Paul},
+  title    = {Materialisation Approaches for Fa\c{c}ade-Based Data Access with {SPARQL}},
+  journal  = {Semantic Web},
+  year     = {2022},
+  doi      = {10.3233/SW-222918},
+  url      = {https://doi.org/10.3233/SW-222918},
   featured = {true}
 }
 
-@inproceedings{daga2021polifonia,
-  author    = {Daga, Enrico and others},
-  title     = {Polifonia: A Modular and Comprehensive Ecosystem for Music Representation},
-  booktitle = {Proceedings of the 18th Extended Semantic Web Conference (ESWC 2021)},
+@article{bardaro2022introducing,
+  author   = {Bardaro, Gianluca and Daga, Enrico and Carvalho, Jason and Chiatti, Agnese and Motta, Enrico},
+  title    = {Introducing a Smart City Component in a Robotic Competition: A Field Report},
+  journal  = {Frontiers in Robotics and AI},
+  year     = {2022},
+  volume   = {9},
+  pages    = {728628},
+  doi      = {10.3389/frobt.2022.728628},
+  url      = {https://doi.org/10.3389/frobt.2022.728628}
+}
+
+@article{daga2021sequential,
+  author   = {Daga, Enrico and Mero{\~n}o-Pe{\~n}uela, Albert and Motta, Enrico},
+  title    = {Sequential Linked Data: The State of Affairs},
+  journal  = {Semantic Web},
+  year     = {2021},
+  volume   = {12},
+  number   = {6},
+  pages    = {927--958},
+  doi      = {10.3233/SW-210428},
+  url      = {https://doi.org/10.3233/SW-210428},
+  featured = {true}
+}
+
+@article{motta2020analysis,
+  author   = {Motta, Enrico and Daga, Enrico and Opdahl, Andreas L. and Tessem, Bj{\o}rnar},
+  title    = {Analysis and Design of Computational News Angles},
+  journal  = {IEEE Access},
+  year     = {2020},
+  volume   = {8},
+  pages    = {120613--120626},
+  doi      = {10.1109/ACCESS.2020.3006526},
+  url      = {https://doi.org/10.1109/ACCESS.2020.3006526}
+}
+
+@article{mulholland2020enabling,
+  author   = {Mulholland, Paul and Daga, Enrico and Daquino, Marilena and D{\'\i}az-Kommonen, Lily and Gangemi, Aldo and Kulfik, Tsvi and Wecker, Alan and Maguire, Mark and Peroni, Silvio and Pescarin, Sofia},
+  title    = {Enabling Multiple Voices in the Museum: Challenges and Approaches},
+  journal  = {Digital Culture \& Society},
+  year     = {2020},
+  volume   = {6},
+  number   = {2},
+  pages    = {259--266},
+  doi      = {10.14361/dcs-2020-0213},
+  url      = {https://doi.org/10.14361/dcs-2020-0213}
+}
+
+@article{tiddi2020robot,
+  author   = {Tiddi, Ilaria and Bastianelli, Emanuele and Daga, Enrico and d'Aquin, Mathieu and Motta, Enrico},
+  title    = {Robot--City Interaction: Mapping the Research Landscape --- A Survey of the Interactions between Robots and Modern Cities},
+  journal  = {International Journal of Social Robotics},
+  year     = {2020},
+  volume   = {12},
+  number   = {2},
+  pages    = {299--324},
+  doi      = {10.1007/s12369-019-00534-x},
+  url      = {https://doi.org/10.1007/s12369-019-00534-x}
+}
+
+@article{daga2018reasoning,
+  author   = {Daga, Enrico and Gangemi, Aldo and Motta, Enrico},
+  title    = {Reasoning with Data Flows and Policy Propagation Rules},
+  journal  = {Semantic Web},
+  year     = {2018},
+  volume   = {9},
+  number   = {2},
+  pages    = {163--183},
+  doi      = {10.3233/SW-170266},
+  url      = {https://doi.org/10.3233/SW-170266},
+  featured = {true}
+}
+
+@article{daga2016open,
+  author   = {Daga, Enrico and d'Aquin, Mathieu and Adamou, Alessandro and Brown, Stuart},
+  title    = {The Open University Linked Data --- data.open.ac.uk},
+  journal  = {Semantic Web},
+  year     = {2016},
+  volume   = {7},
+  number   = {2},
+  pages    = {183--191},
+  doi      = {10.3233/SW-150182},
+  url      = {https://doi.org/10.3233/SW-150182},
+  featured = {true}
+}
+
+@article{gangemi2011linked,
+  author   = {Gangemi, Aldo and Daga, Enrico and Salvati, Alberto and Troiani, Gianluca and Baldassarre, Claudio},
+  title    = {Linked Open Data for the Italian {PA}: The {CNR} Experience},
+  journal  = {Informatica e diritto},
+  year     = {2011},
+  volume   = {1},
+  number   = {2},
+  pages    = {453--476}
+}
+
+% ──────────────────────────────────────────────
+% CONFERENCE & WORKSHOP PAPERS
+% ──────────────────────────────────────────────
+
+@inproceedings{samela2025investigating,
+  author    = {Samela, Laura and Daga, Enrico and Mulholland, Paul},
+  title     = {Investigating Vividness Bias in Language Models through Art Interpretations},
+  booktitle = {CEUR Workshop Proceedings},
+  year      = {2025},
+  volume    = {3967},
+  url       = {https://ceur-ws.org/Vol-3967/ELMKE_2024_paper_2.pdf}
+}
+
+@inproceedings{graciotti2025ke,
+  author    = {Graciotti, Arianna and Piano, Leonardo and Lazzari, Nicolas and Daga, Enrico and Tripodi, Rocco and Presutti, Valentina and Pompianu, Livio},
+  title     = {{KE-MHISTO}: Towards a Multilingual Historical Knowledge Extraction Benchmark for Addressing the Long-Tail Problem},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+  year      = {2025},
+  pages     = {20316--20339}
+}
+
+@inproceedings{burel2025climatesense,
+  author    = {Burel, Gr{\'e}goire and Lisena, Pasquale and Daga, Enrico and Troncy, Raphael and Alani, Harith},
+  title     = {{ClimateSense} at {CheckThat!} 2025: Combining Fine-Tuned Large Language Models and Conventional Machine Learning Models for Subjectivity and Scientific Web-Discourse Analysis},
+  booktitle = {Proceedings of the CLEF 2025 Conference and Labs of the Evaluation Forum},
+  year      = {2025}
+}
+
+@inproceedings{begliuomini2025curated,
+  author    = {Begliuomini, Miriam and Crisan, Marius and Daga, Enrico and Damiano, Rossana and Nechita, Florin and Roussillon-Constanty, Laurence and Stranisci, Marco Antonio and Trinchero, Cristina},
+  title     = {Curated Datasets for Literary Tourism: A Case Study in Knowledge Graph Creation},
+  booktitle = {CEUR Workshop Proceedings},
+  year      = {2025},
+  volume    = {4009}
+}
+
+@inproceedings{reyero2024enhancing,
+  author    = {Reyero Lobo, Paula and Daga, Enrico and Alani, Harith and Fernandez, Miriam},
+  title     = {Enhancing Hate Speech Annotations with Background Semantics},
+  booktitle = {Proceedings of the 27th European Conference on Artificial Intelligence (ECAI 2024)},
+  year      = {2024},
+  doi       = {10.3233/FAIA240541},
+  url       = {https://doi.org/10.3233/FAIA240541}
+}
+
+@inproceedings{mulholland2024supporting,
+  author    = {Mulholland, Paul and Van Kranenburg, Peter and Carvalho, Jason and Daga, Enrico},
+  title     = {Supporting the End-User Curation of Cultural Heritage Knowledge Graphs},
+  booktitle = {Proceedings of the 35th ACM Conference on Hypertext and Social Media},
+  year      = {2024},
+  pages     = {35--44},
+  doi       = {10.1145/3648188.3675135},
+  url       = {https://doi.org/10.1145/3648188.3675135}
+}
+
+@inproceedings{morales2024musical,
+  author    = {Morales Tirado, Alba and Carvalho, Jason and Ratta, Marco and Uwasomba, Chukwudi and Mulholland, Paul and Barlow, Helen and Herbert, Trevor and Daga, Enrico},
+  title     = {Musical Meetups Knowledge Graph ({MMKG}): A Collection of Evidence for Historical Social Network Analysis},
+  booktitle = {Proceedings of the 21st Extended Semantic Web Conference (ESWC 2024)},
+  year      = {2024},
+  pages     = {110--127},
+  doi       = {10.1007/978-3-031-60635-9_7},
+  url       = {https://doi.org/10.1007/978-3-031-60635-9_7}
+}
+
+@inproceedings{ratta2024pysparql,
+  author    = {Ratta, Marco and Daga, Enrico and Asprino, Luigi},
+  title     = {{PySPARQL} Anything Showcase},
+  booktitle = {Proceedings of the 21st Extended Semantic Web Conference (ESWC 2024)},
+  year      = {2024},
+  pages     = {301--305},
+  doi       = {10.1007/978-3-031-60635-9_26},
+  url       = {https://doi.org/10.1007/978-3-031-60635-9_26}
+}
+
+@inproceedings{reyero2023knowledge,
+  author    = {Reyero Lobo, Paula and Daga, Enrico and Alani, Harith and Fernandez, Miriam},
+  title     = {Knowledge-Grounded Target Group Language Recognition in Hate Speech},
+  booktitle = {Proceedings of the 19th International Conference on Semantic Systems (SEMANTiCS 2023)},
+  year      = {2023},
+  volume    = {56},
+  pages     = {1--15},
+  doi       = {10.3233/SSW230018},
+  url       = {https://doi.org/10.3233/SSW230018}
+}
+
+@inproceedings{mulholland2023deep,
+  author    = {Mulholland, Paul and Stoneman, Adam and Carvalho, Jason and Daga, Enrico and Maguire, Mark},
+  title     = {Deep Viewpoints: Scripted Support for the Citizen Curation of Museum Artworks},
+  booktitle = {Proceedings of the 34th ACM Conference on Hypertext and Social Media},
+  year      = {2023},
+  pages     = {1--11},
+  doi       = {10.1145/3603163.3609057},
+  url       = {https://doi.org/10.1145/3603163.3609057}
+}
+
+@inproceedings{mulholland2023sound,
+  author    = {Mulholland, Paul and Stoneman, Adam and Barker, Naomi and Maguire, Mark and Carvalho, Jason and Daga, Enrico and Warren, Paul},
+  title     = {The Sound of Paintings: Using Citizen Curation to Explore the Cross-Modal Personalization of Museum Experiences},
+  booktitle = {Adjunct Proceedings of the 31st ACM Conference on User Modeling, Adaptation and Personalization},
+  year      = {2023},
+  pages     = {408--418},
+  doi       = {10.1145/3563359.3596659},
+  url       = {https://doi.org/10.1145/3563359.3596659}
+}
+
+@inproceedings{morales2023musical,
+  author    = {Morales Tirado, Alba and Carvalho, Jason and Mulholland, Paul and Daga, Enrico},
+  title     = {Musical Meetups: A Knowledge Graph Approach for Historical Social Network Analysis},
+  booktitle = {Proceedings of the Semantic Methods for Events and Stories Workshop (SEMMES) at ESWC 2023},
+  year      = {2023},
+  volume    = {3443}
+}
+
+@inproceedings{daga2023documenting,
+  author    = {Daga, Enrico and Daquino, Marilena and Fournier-S'niehotta, Rapha{\"e}l and Guillotel-Nothmann, Christophe and Scharnhorst, Andrea},
+  title     = {Documenting the Research Process: Opportunities and Challenges for Bibliometrics and Information Retrieval --- The Case of the Polifonia Research Ecosystem},
+  booktitle = {Proceedings of the 13th Bibliometric-Enhanced Information Retrieval Workshop (BIR) at ECIR 2023},
+  year      = {2023},
+  volume    = {3617}
+}
+
+@inproceedings{asprino2023streamlining,
+  author    = {Asprino, Luigi and Daga, Enrico and Dowdy, Justin and Mulholland, Paul and Gangemi, Aldo and Ratta, Marco},
+  title     = {Streamlining Knowledge Graph Construction with a Fa\c{c}ade: The {SPARQL} Anything Project},
+  booktitle = {Proceedings of the 2nd European Data Conference on Reference Data and Semantics (ENDORSE 2023)},
+  year      = {2023}
+}
+
+@inproceedings{van20232nd,
+  author    = {Van Erp, Marieke and Troncy, Rapha{\"e}l and Presutti, Valentina and Mero{\~n}o-Pe{\~n}uela, Albert and Tonelli, Sara and Daga, Enrico},
+  title     = {2nd International Workshop on Multisensory Data and Knowledge ({MDK})},
+  booktitle = {Companion Proceedings of The ACM Web Conference 2023},
+  year      = {2023},
+  pages     = {660--660},
+  doi       = {10.1145/3543873.3587601},
+  url       = {https://doi.org/10.1145/3543873.3587601}
+}
+
+@inproceedings{lobo2022supporting,
+  author    = {Reyero Lobo, Paula and Daga, Enrico and Alani, Harith},
+  title     = {Supporting Online Toxicity Detection with Knowledge Graphs},
+  booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+  year      = {2022},
+  volume    = {16},
+  pages     = {1414--1418},
+  doi       = {10.1609/icwsm.v16i1.19382},
+  url       = {https://doi.org/10.1609/icwsm.v16i1.19382}
+}
+
+@inproceedings{reyero2022estimating,
+  author    = {Reyero Lobo, Paula and Mensio, Martino and Pavon Perez, Angel and Bayer, Vaclav and Kwarteng, Joseph and Fernandez, Miriam and Daga, Enrico and Alani, Harith},
+  title     = {Estimating Ground Truth in a Low-Labelled Data Regime: A Study of Racism Detection in {Spanish}},
+  booktitle = {Workshop Proceedings of the 16th International AAAI Conference on Web and Social Media},
+  year      = {2022}
+}
+
+@inproceedings{morales2022towards,
+  author    = {Morales Tirado, Alba Catalina and Daga, Enrico and Motta, Enrico},
+  title     = {Towards a Knowledge Graph of Health Evolution},
+  booktitle = {Proceedings of the 23rd International Conference on Knowledge Engineering and Knowledge Management (EKAW 2022)},
+  year      = {2022},
+  pages     = {105--120},
+  doi       = {10.1007/978-3-031-17105-5_8},
+  url       = {https://doi.org/10.1007/978-3-031-17105-5_8}
+}
+
+@inproceedings{morales2022hecon,
+  author    = {Morales Tirado, Alba and Daga, Enrico and Motta, Enrico},
+  title     = {{HECON}: Health Condition Evolution Ontology},
+  booktitle = {Proceedings of the 5th Workshop on Semantic Web Solutions for Large-Scale Biomedical Data Analytics (SeWeBMeDA) at ESWC 2022},
+  year      = {2022}
+}
+
+@inproceedings{morales2022conrad,
+  author    = {Morales Tirado, Alba and Daga, Enrico and Motta, Enrico},
+  title     = {{CONRAD} --- Health Condition Radar: An Intelligent System for Emergency Support},
+  booktitle = {Proceedings of the 5th Workshop on Semantic Web Solutions for Large-Scale Biomedical Data Analytics (SeWeBMeDA) at ESWC 2022},
+  year      = {2022}
+}
+
+@inproceedings{chiatti2022neuro,
+  author    = {Chiatti, Agnese and Daga, Enrico},
+  title     = {Neuro-Symbolic Learning for Dealing with Sparsity in Cultural Heritage Image Archives: An Empirical Journey},
+  booktitle = {CEUR Workshop Proceedings},
+  year      = {2022},
+  volume    = {3342}
+}
+
+@inproceedings{ratta2022knowledge,
+  author    = {Ratta, Marco and Daga, Enrico},
+  title     = {Knowledge Graph Construction from {MusicXML}: An Empirical Investigation with {SPARQL} Anything},
+  booktitle = {Proceedings of the Musical Heritage Knowledge Graphs Workshop},
+  year      = {2022}
+}
+
+@inproceedings{daga2021facade,
+  author    = {Daga, Enrico and Asprino, Luigi and Mulholland, Paul and Gangemi, Aldo},
+  title     = {Facade-{X}: An Opinionated Approach to {SPARQL} Anything},
+  booktitle = {Proceedings of the 17th International Conference on Semantic Systems (SEMANTiCS 2021)},
   year      = {2021},
-  url       = {http://www.polifonia-project.eu}
+  volume    = {53},
+  pages     = {58--73},
+  doi       = {10.3233/SSW210035},
+  url       = {https://doi.org/10.3233/SSW210035}
 }
 
-@inproceedings{daga2020led,
-  author    = {Daga, Enrico and Wiggins, Geraint and others},
-  title     = {The Listening Experience Database: Documenting Musical Responses over Five Centuries},
-  booktitle = {Proceedings of the Digital Humanities Conference (DH 2020)},
-  year      = {2020}
+@inproceedings{morales2021reasoning,
+  author    = {Morales Tirado, Alba Catalina and Daga, Enrico and Motta, Enrico},
+  title     = {Reasoning on Health Condition Evolution for Enhanced Detection of Vulnerable People in Emergency Settings},
+  booktitle = {Proceedings of the 11th International Conference on Knowledge Capture (K-CAP 2021)},
+  year      = {2021},
+  pages     = {9--16},
+  doi       = {10.1145/3460210.3493560},
+  url       = {https://doi.org/10.1145/3460210.3493560}
 }
 
-@inproceedings{daga2019basil,
-  author    = {Daga, Enrico and Panziera, Luca and Pedrinaci, Carlos},
-  title     = {BASIL: A Smart and Scalable Platform for Publishing Linked Data APIs},
-  booktitle = {Proceedings of the 4th Workshop on Services and Applications over Linked APIs and Data (SALAD)},
+@inproceedings{daga2021proceedings,
+  author    = {Daga, Enrico and Mero{\~n}o-Pe{\~n}uela, Albert and Presutti, Valentina and Tonelli, Sara and Troncy, Rapha{\"e}l and Van Erp, Marieke},
+  title     = {Proceedings of the First International Workshop on Multisensory Data \& Knowledge ({MDK})},
+  booktitle = {Proceedings of the First International Workshop on Multisensory Data \& Knowledge},
+  year      = {2021}
+}
+
+@inproceedings{morales2020effective,
+  author    = {Morales Tirado, Alba Catalina and Daga, Enrico and Motta, Enrico},
+  title     = {Effective Use of Personal Health Records to Support Emergency Services},
+  booktitle = {Proceedings of the 22nd International Conference on Knowledge Engineering and Knowledge Management (EKAW 2020)},
+  year      = {2020},
+  pages     = {54--70},
+  doi       = {10.1007/978-3-030-61244-3_4},
+  url       = {https://doi.org/10.1007/978-3-030-61244-3_4}
+}
+
+@inproceedings{daga2019capturing,
+  author    = {Daga, Enrico and Motta, Enrico},
+  title     = {Capturing Themed Evidence, a Hybrid Approach},
+  booktitle = {Proceedings of the 10th International Conference on Knowledge Capture (K-CAP 2019)},
   year      = {2019},
-  url       = {https://github.com/the-open-university/basil}
+  doi       = {10.1145/3360901.3364427},
+  url       = {https://doi.org/10.1145/3360901.3364427}
 }
 
-@phdthesis{daga2018phd,
-  author = {Daga, Enrico},
-  title  = {Modelling and Exploiting Context in Linked Data Mashups},
-  school = {The Open University},
-  year   = {2018},
-  url    = {http://oro.open.ac.uk/}
+@inproceedings{daga2019modelling,
+  author    = {Daga, Enrico and Mero{\~n}o-Pe{\~n}uela, Albert and Motta, Enrico},
+  title     = {Modelling and Querying Lists in {RDF}: A Pragmatic Study},
+  booktitle = {Proceedings of the ISWC Workshop on Querying the Web of Data (QuWeDa)},
+  year      = {2019}
+}
+
+@inproceedings{merono2019list,
+  author    = {Mero{\~n}o-Pe{\~n}uela, Albert and Daga, Enrico},
+  title     = {{List.MID}: A {MIDI}-Based Benchmark for Evaluating {RDF} Lists},
+  booktitle = {Proceedings of the 18th International Semantic Web Conference (ISWC 2019)},
+  year      = {2019},
+  pages     = {246--260},
+  doi       = {10.1007/978-3-030-30796-7_16},
+  url       = {https://doi.org/10.1007/978-3-030-30796-7_16}
+}
+
+@inproceedings{morales2019towards,
+  author    = {Morales Tirado, Alba and Daga, Enrico and Motta, Enrico},
+  title     = {Towards a Privacy Aware Information System for Emergency Response},
+  booktitle = {Proceedings of the 16th International Conference on Information Systems for Crisis Response and Management (ISCRAM 2019)},
+  year      = {2019},
+  pages     = {1411--1413}
+}
+
+@inproceedings{merono2018semantic,
+  author    = {Mero{\~n}o-Pe{\~n}uela, Albert and De Valk, Reinier and Daga, Enrico and Daquino, Marilena and Kent-Muller, Anna},
+  title     = {The Semantic Web {MIDI} Tape: An Interface for Interlinking {MIDI} and Context Metadata},
+  booktitle = {Proceedings of the 1st International Workshop on Semantic Applications for Audio and Music (SAAM)},
+  year      = {2018},
+  pages     = {24--32},
+  doi       = {10.1145/3243907.3243913},
+  url       = {https://doi.org/10.1145/3243907.3243913}
+}
+
+@inproceedings{daga2017propagating,
+  author    = {Daga, Enrico and d'Aquin, Mathieu and Motta, Enrico},
+  title     = {Propagating Data Policies: A User Study},
+  booktitle = {Proceedings of the 9th International Conference on Knowledge Capture (K-CAP 2017)},
+  year      = {2017},
+  pages     = {1--8},
+  doi       = {10.1145/3148011.3148020},
+  url       = {https://doi.org/10.1145/3148011.3148020}
+}
+
+@inproceedings{daga2016incremental,
+  author    = {Daga, Enrico and d'Aquin, Mathieu and Gangemi, Aldo and Motta, Enrico},
+  title     = {An Incremental Learning Method to Support the Annotation of Workflows with Data-to-Data Relations},
+  booktitle = {Proceedings of the 20th International Conference on Knowledge Engineering and Knowledge Management (EKAW 2016)},
+  year      = {2016},
+  pages     = {129--144},
+  doi       = {10.1007/978-3-319-49004-5_9},
+  url       = {https://doi.org/10.1007/978-3-319-49004-5_9}
+}
+
+@inproceedings{daga2016addressing,
+  author    = {Daga, Enrico and d'Aquin, Mathieu and Adamou, Alessandro and Motta, Enrico},
+  title     = {Addressing Exploitability of Smart City Data},
+  booktitle = {Proceedings of the 2016 IEEE International Smart Cities Conference (ISC2)},
+  year      = {2016},
+  pages     = {1--6},
+  doi       = {10.1109/ISC2.2016.7580835},
+  url       = {https://doi.org/10.1109/ISC2.2016.7580835}
+}
+
+@inproceedings{tiddi2016dka,
+  author    = {Tiddi, Ilaria and Bastianelli, Emanuele and Daga, Enrico and d'Aquin, Mathieu},
+  title     = {{DKA-Robo}: Dynamically Updating Time-Invalid Knowledge Bases Using Robots},
+  booktitle = {Proceedings of the 20th International Conference on Knowledge Engineering and Knowledge Management (EKAW 2016)},
+  year      = {2016},
+  pages     = {193--197},
+  doi       = {10.1007/978-3-319-49004-5_13},
+  url       = {https://doi.org/10.1007/978-3-319-49004-5_13}
+}
+
+@inproceedings{daga2015basil,
+  author    = {Daga, Enrico and Panziera, Luca and Pedrinaci, Carlos},
+  title     = {A {BASIL}ar Approach for Building Web {APIs} on Top of {SPARQL} Endpoints},
+  booktitle = {Proceedings of the 3rd Workshop on Services and Applications over Linked APIs and Data (SALAD) at ESWC 2015},
+  year      = {2015},
+  volume    = {1359},
+  pages     = {22--32}
+}
+
+@inproceedings{daga2015propagation,
+  author    = {Daga, Enrico and d'Aquin, Mathieu and Gangemi, Aldo and Motta, Enrico},
+  title     = {Propagation of Policies in Rich Data Flows},
+  booktitle = {Proceedings of the 8th International Conference on Knowledge Capture (K-CAP 2015)},
+  year      = {2015},
+  pages     = {1--8},
+  doi       = {10.1145/2815833.2815839},
+  url       = {https://doi.org/10.1145/2815833.2815839}
+}
+
+@inproceedings{daga2015licences,
+  author    = {Daga, Enrico and d'Aquin, Mathieu and Motta, Enrico and Gangemi, Aldo},
+  title     = {A Bottom-Up Approach for Licences Classification and Selection},
+  booktitle = {Proceedings of the International Workshop on Legal Domain and Semantic Web Applications (LeDA-SWAn) at ESWC 2015},
+  year      = {2015},
+  pages     = {257--267},
+  doi       = {10.1007/978-3-319-25639-9_34},
+  url       = {https://doi.org/10.1007/978-3-319-25639-9_34}
+}
+
+@inproceedings{daga2015contento,
+  author    = {Daga, Enrico and d'Aquin, Mathieu and Gangemi, Aldo and Motta, Enrico},
+  title     = {Bottom-Up Ontology Construction with {Contento}},
+  booktitle = {CEUR Workshop Proceedings},
+  year      = {2015},
+  volume    = {1486}
+}
+
+@inproceedings{daga2012towards,
+  author    = {Daga, Enrico},
+  title     = {Towards a Theoretical Foundation for the Harmonization of Linked Data},
+  booktitle = {Proceedings of the 11th International Semantic Web Conference (ISWC 2012) --- Posters \& Demos},
+  year      = {2012},
+  pages     = {445--448},
+  doi       = {10.1007/978-3-642-35173-0_30},
+  url       = {https://doi.org/10.1007/978-3-642-35173-0_30}
+}
+
+@inproceedings{blomqvist2010experimenting,
+  author    = {Blomqvist, Eva and Presutti, Valentina and Daga, Enrico and Gangemi, Aldo},
+  title     = {Experimenting with Extreme Design},
+  booktitle = {Proceedings of the 17th International Conference on Knowledge Engineering and Knowledge Management (EKAW 2010)},
+  year      = {2010},
+  pages     = {120--134},
+  doi       = {10.1007/978-3-642-16438-5_9},
+  url       = {https://doi.org/10.1007/978-3-642-16438-5_9}
+}
+
+@inproceedings{baldassarre2010semantic,
+  author    = {Baldassarre, Claudio and Daga, Enrico and Gangemi, Aldo and Gliozzo, Alfio and Salvati, Alberto and Troiani, Gianluca},
+  title     = {Semantic Scout: Making Sense of Organizational Knowledge},
+  booktitle = {Proceedings of the 17th International Conference on Knowledge Engineering and Knowledge Management (EKAW 2010)},
+  year      = {2010},
+  pages     = {272--286},
+  doi       = {10.1007/978-3-642-16438-5_19},
+  url       = {https://doi.org/10.1007/978-3-642-16438-5_19}
+}
+
+@inproceedings{presutti2009extreme,
+  author    = {Presutti, Valentina and Daga, Enrico and Gangemi, Aldo and Blomqvist, Eva},
+  title     = {{eXtreme} Design with Content Ontology Design Patterns},
+  booktitle = {Proceedings of the Workshop on Ontology Patterns (WOP 2009)},
+  year      = {2009},
+  pages     = {83--97}
+}
+
+@inproceedings{gliozzo2007collaborative,
+  author    = {Gliozzo, Alfio and Gangemi, Aldo and Presutti, Valentina and Cardillo, Elena and Daga, Enrico and Salvati, Alberto and Troiani, Gianluca},
+  title     = {A Collaborative Semantic Web Layer to Enhance Legacy Systems},
+  booktitle = {Proceedings of the 6th International Semantic Web Conference (ISWC 2007)},
+  year      = {2007},
+  pages     = {764--777},
+  doi       = {10.1007/978-3-540-76298-0_55},
+  url       = {https://doi.org/10.1007/978-3-540-76298-0_55}
+}
+
+@inproceedings{presutti2008http,
+  author    = {Presutti, Valentina and Daga, Enrico and Gangemi, Aldo and Salvati, Alberto},
+  title     = {http://ontologydesignpatterns.org [{ODP}]},
+  booktitle = {Proceedings of the ISWC 2008 Posters \& Demonstrations Track},
+  year      = {2008}
+}
+
+% ──────────────────────────────────────────────
+% BOOK CHAPTERS
+% ──────────────────────────────────────────────
+
+@incollection{presutti2011pattern,
+  author    = {Presutti, Valentina and Blomqvist, Eva and Daga, Enrico and Gangemi, Aldo},
+  title     = {Pattern-Based Ontology Design},
+  booktitle = {Ontology Engineering in a Networked World},
+  year      = {2011},
+  pages     = {35--64},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-642-24794-1_3},
+  url       = {https://doi.org/10.1007/978-3-642-24794-1_3}
+}
+
+% ──────────────────────────────────────────────
+% EDITED PROCEEDINGS & SPECIAL ISSUES
+% ──────────────────────────────────────────────
+
+@misc{daga2024introduction,
+  author    = {Daga, Enrico and Damiano, Rossana and D{\'\i}az-Kommonen, Lily and Kuflik, Tsvi and Striani, Manuel},
+  title     = {Introduction to the Special Issue on Extended Intelligence for Cultural Engagement},
+  journal   = {ACM Journal on Computing and Cultural Heritage},
+  year      = {2024},
+  volume    = {17},
+  number    = {4},
+  pages     = {1--4},
+  doi       = {10.1145/3690640},
+  url       = {https://doi.org/10.1145/3690640}
+}
+
+@inproceedings{adamou2016proceedings,
+  author    = {Adamou, Alessandro and Daga, Enrico and Isaksen, Leif},
+  title     = {Proceedings of the 1st Workshop on Humanities in the Semantic Web ({WHiSe}) co-located with ESWC 2016},
+  booktitle = {CEUR Workshop Proceedings},
+  year      = {2016}
+}
+
+% ──────────────────────────────────────────────
+% PHD THESIS
+% ──────────────────────────────────────────────
+
+@phdthesis{daga2018knowledge,
+  author  = {Daga, Enrico},
+  title   = {Knowledge Components and Methods for Policy Propagation in Data Flows},
+  school  = {The Open University},
+  year    = {2018},
+  url     = {http://oro.open.ac.uk/55564/}
+}
+
+% ──────────────────────────────────────────────
+% PREPRINTS & UNDER REVIEW
+% ──────────────────────────────────────────────
+
+@article{asprino2026towards,
+  author  = {Asprino, Luigi and Daga, Enrico},
+  title   = {Towards a Theory of Fa\c{c}ade-{X} Data Access: Satisfiability of {SPARQL} Basic Graph Patterns},
+  journal = {arXiv preprint arXiv:2602.11756},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2602.11756}
+}
+
+@article{graciotti2025lost,
+  author  = {Graciotti, Arianna and Lazzari, Nicolas and Daga, Enrico and Presutti, Valentina},
+  title   = {Lost and Found: Enriching Knowledge Graphs with ``{NIL}'' Persons from Historical Documents},
+  year    = {2025}
 }
