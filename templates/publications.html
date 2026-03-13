@@ -4,9 +4,10 @@
 
 {% block extra_head %}
 <style>
+  /* ── Filter bar ── */
   .filter-bar {
     display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
   }
   .filter-btn {
     font-family: var(--mono);
@@ -26,6 +27,102 @@
     border-color: var(--teal);
     color: white;
   }
+
+  /* ── Publication item ── */
+  .pub-item {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    gap: 0 2rem;
+    padding: 1.5rem 1.25rem;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .pub-item:last-child { border-bottom: 1px solid var(--rule); }
+  .pub-item:hover { background: var(--off); }
+
+  /* Featured entries */
+  .pub-item.featured {
+    background: var(--warm-soft);
+    border-top-color: rgba(244,162,74,0.25);
+    border-left: 3px solid var(--warm);
+    padding-left: calc(1.25rem - 3px);
+  }
+  .pub-item.featured:hover { background: #fdefd8; }
+
+  .pub-year {
+    font-family: var(--mono);
+    font-size: 0.75rem; color: var(--ink-soft);
+    padding-top: 0.25rem; letter-spacing: 0.04em;
+  }
+  .pub-body { min-width: 0; }
+  .pub-title {
+    font-family: var(--serif);
+    font-size: 1.05rem; font-weight: 400;
+    line-height: 1.45; color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .pub-title a { color: inherit; text-decoration: none; }
+  .pub-title a:hover { color: var(--teal); }
+  .pub-authors {
+    font-size: 0.8rem; color: var(--ink-mid);
+    margin-bottom: 0.2rem;
+    line-height: 1.4;
+  }
+  .pub-venue {
+    font-size: 0.8rem; color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* Abstract toggle */
+  .abstract-toggle {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.62rem; font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border: none; background: none; padding: 0;
+    transition: color 0.15s;
+  }
+  .abstract-toggle:hover { color: var(--teal-deep); }
+  .abstract-toggle .toggle-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+    font-style: normal;
+  }
+  .abstract-toggle.open .toggle-arrow { transform: rotate(90deg); }
+
+  .pub-abstract {
+    display: none;
+    margin-top: 0.75rem;
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: var(--ink-mid);
+    border-left: 2px solid var(--rule);
+    padding-left: 1rem;
+  }
+  .pub-abstract.open { display: block; }
+
+  /* Badge column */
+  .pub-badge-col {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;
+    padding-top: 0.2rem;
+  }
+  .pub-badge {
+    font-family: var(--mono);
+    font-size: 0.58rem; font-weight: 500;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 0.22rem 0.6rem; border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-j     { background: var(--teal-subtle); color: var(--teal-deep); }
+  .badge-c     { background: #eef1fb; color: #3d5bbd; }
+  .badge-t     { background: #f3eefb; color: #6b3fa0; }
+  .badge-other { background: #f5f5f5; color: var(--ink-mid); }
+  .badge-featured { background: var(--warm); color: white; }
 </style>
 {% endblock %}
 
@@ -33,7 +130,7 @@
 <div class="page-hero">
   <div class="page-hero-label">Publications</div>
   <h1>Research <em>Output</em></h1>
-  <p class="page-hero-sub">Peer-reviewed journal articles, conference papers, book chapters, and more.</p>
+  <p class="page-hero-sub">Peer-reviewed journal articles, conference papers, book chapters, and more — sorted by year.</p>
 </div>
 
 <div class="section">
@@ -41,50 +138,91 @@
   <!-- Filter bar -->
   <div class="filter-bar">
     <button class="filter-btn filter-active" data-pub-filter="all">All</button>
-    {% for label, entries in pub_sections %}
-    <button class="filter-btn" data-pub-filter="{{ label | lower | replace(' ', '-') }}">{{ label }}</button>
-    {% endfor %}
+    <button class="filter-btn" data-pub-filter="Journal">Journal</button>
+    <button class="filter-btn" data-pub-filter="Conference">Conference</button>
+    <button class="filter-btn" data-pub-filter="Chapter">Chapter</button>
+    <button class="filter-btn" data-pub-filter="Thesis">Thesis</button>
+    <button class="filter-btn" data-pub-filter="Other">Other</button>
+    <button class="filter-btn" data-pub-filter="featured">★ Featured</button>
   </div>
 
-  <!-- Publication groups -->
-  {% for label, entries in pub_sections %}
-  <div data-pub-type="{{ label | lower | replace(' ', '-') }}">
-    <div class="pub-type-heading">{{ label }}</div>
-    <div class="pub-list">
-      {% for entry in entries %}
-      <div class="pub-item">
-        <div class="pub-year">{{ entry.year }}</div>
-        <div>
-          <div class="pub-title">
-            {% if entry.url %}
-              <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.title }}</a>
-            {% elif entry.doi %}
-              <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener">{{ entry.title }}</a>
-            {% else %}
-              {{ entry.title }}
-            {% endif %}
-          </div>
-          <div class="pub-venue">
-            {{ entry.get('journal', entry.get('booktitle', entry.get('school', ''))) }}
-            {% if entry.get('author') %}· {{ entry.author[:80] }}{% if entry.author|length > 80 %}…{% endif %}{% endif %}
-          </div>
+  <!-- Unified chronological list -->
+  <div class="pub-list">
+    {% for entry in publications %}
+    <div class="pub-item {% if entry.is_featured %}featured{% endif %}"
+         data-pub-type="{{ entry.type_label }}"
+         data-featured="{{ 'true' if entry.is_featured else 'false' }}">
+
+      <div class="pub-year">{{ entry.year }}</div>
+
+      <div class="pub-body">
+        <div class="pub-title">
+          {% if entry.url %}
+            <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.title }}</a>
+          {% elif entry.doi %}
+            <a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener">{{ entry.title }}</a>
+          {% else %}
+            {{ entry.title }}
+          {% endif %}
         </div>
+        {% if entry.author %}
+        <div class="pub-authors">{{ entry.author }}</div>
+        {% endif %}
+        <div class="pub-venue">
+          {{ entry.get('journal', entry.get('booktitle', entry.get('school', ''))) }}
+        </div>
+        {% if entry.abstract %}
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">
+          <span class="toggle-arrow">▶</span> Show abstract
+        </button>
+        <div class="pub-abstract">{{ entry.abstract }}</div>
+        {% endif %}
+      </div>
+
+      <div class="pub-badge-col">
+        {% if entry.is_featured %}
+        <span class="pub-badge badge-featured">Featured</span>
+        {% endif %}
         <span class="pub-badge
           {%- if entry.ENTRYTYPE == 'article' %} badge-j
           {%- elif entry.ENTRYTYPE == 'inproceedings' %} badge-c
           {%- elif entry.ENTRYTYPE == 'phdthesis' %} badge-t
           {%- else %} badge-other{%- endif %}">
-          {%- if entry.ENTRYTYPE == 'article' %}Journal
-          {%- elif entry.ENTRYTYPE == 'inproceedings' %}Conference
-          {%- elif entry.ENTRYTYPE == 'incollection' %}Chapter
-          {%- elif entry.ENTRYTYPE == 'phdthesis' %}Thesis
-          {%- else %}Other{%- endif %}
+          {{ entry.type_label }}
         </span>
       </div>
-      {% endfor %}
+
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 
 </div>
+
+<script>
+  // ── Abstract toggle ──────────────────────────────────────────────────────
+  function toggleAbstract(btn) {
+    const abstract = btn.nextElementSibling;
+    const isOpen = abstract.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.childNodes[1].nodeValue = isOpen ? ' Hide abstract' : ' Show abstract';
+  }
+
+  // ── Publication type filter ──────────────────────────────────────────────
+  document.querySelectorAll('[data-pub-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-pub-filter]').forEach(b => b.classList.remove('filter-active'));
+      btn.classList.add('filter-active');
+      const filter = btn.dataset.pubFilter;
+      document.querySelectorAll('.pub-item').forEach(item => {
+        if (filter === 'all') {
+          item.style.display = '';
+        } else if (filter === 'featured') {
+          item.style.display = item.dataset.featured === 'true' ? '' : 'none';
+        } else {
+          item.style.display = item.dataset.pubType === filter ? '' : 'none';
+        }
+      });
+    });
+  });
+</script>
 {% endblock %}

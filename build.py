@@ -39,42 +39,55 @@ def load_json(filename: str) -> Union[list, dict]:
         return json.load(f)
 
 
-def parse_bib(filename: str = "publications.bib") -> Dict[str, List]:
+# Human-readable labels for BibTeX entry types
+ENTRYTYPE_LABELS = {
+    "article":       "Journal",
+    "inproceedings": "Conference",
+    "incollection":  "Chapter",
+    "proceedings":   "Proceedings",
+    "misc":          "Other",
+    "phdthesis":     "Thesis",
+}
+
+
+def parse_bib(filename: str = "publications.bib") -> Dict:
     """
-    Parse a BibTeX file and return a dict keyed by entry type,
-    each value being a list of entries sorted by year descending.
+    Parse a BibTeX file and return:
+      - 'all':    flat list of all entries sorted by year descending
+      - 'groups': dict keyed by ENTRYTYPE, each a list sorted by year descending
+    Each entry is augmented with:
+      - 'type_label': human-readable badge string
+      - 'is_featured': bool from featured = {true} field
     """
     path = CONTENT / filename
     if not path.exists():
-        return {}
+        return {"all": [], "groups": {}}
 
     parser = BibTexParser(common_strings=True)
     parser.customization = convert_to_unicode
     with path.open(encoding="utf-8") as f:
         bib_db = bibtexparser.load(f, parser=parser)
 
-    # Group by ENTRYTYPE
-    groups: Dict[str, List] = {}
+    entries = []
     for entry in bib_db.entries:
         etype = entry.get("ENTRYTYPE", "misc").lower()
-        groups.setdefault(etype, []).append(entry)
+        entry["type_label"] = ENTRYTYPE_LABELS.get(etype, "Other")
+        entry["is_featured"] = entry.get("featured", "").strip().lower() == "true"
+        entries.append(entry)
 
-    # Sort each group by year descending
+    # Flat list sorted by year descending
+    all_sorted = sorted(entries, key=lambda e: int(e.get("year", 0)), reverse=True)
+
+    # Grouped by type, each group sorted by year descending
+    groups: Dict[str, List] = {}
+    for entry in entries:
+        etype = entry.get("ENTRYTYPE", "misc").lower()
+        groups.setdefault(etype, []).append(entry)
     for etype in groups:
         groups[etype].sort(key=lambda e: int(e.get("year", 0)), reverse=True)
 
-    return groups
+    return {"all": all_sorted, "groups": groups}
 
-
-# Canonical display order and labels for publication types
-PUB_TYPE_ORDER = [
-    ("article",       "Journal Articles"),
-    ("inproceedings", "Conference Papers"),
-    ("incollection",  "Book Chapters"),
-    ("proceedings",   "Edited Proceedings"),
-    ("misc",          "Edited Special Issues / Other"),
-    ("phdthesis",     "PhD Thesis"),
-]
 
 # ── Build ──────────────────────────────────────────────────────────────────
 
@@ -92,21 +105,16 @@ def copy_assets():
 
 
 def build_pages(env: Environment):
-    bib_groups = parse_bib()
-    pub_sections = [
-        (label, bib_groups.get(etype, []))
-        for etype, label in PUB_TYPE_ORDER
-        if bib_groups.get(etype)
-    ]
+    bib = parse_bib()
 
     pages = {
         "index.html": {
             "title": "Enrico Daga — Senior Research Fellow, The Open University",
             "description": "Personal academic website of Enrico Daga, Senior Research Fellow at the Knowledge Media Institute, The Open University.",
-            "projects":  load_json("projects.json"),
-            "talks":     load_json("talks.json")[:5],   # latest 5 for homepage
-            "tools":     load_json("tools.json"),
-            "bib_groups": bib_groups,
+            "projects":   load_json("projects.json"),
+            "talks":      load_json("talks.json")[:5],
+            "tools":      load_json("tools.json"),
+            "bib_groups": bib["groups"],
         },
         "about.html": {
             "title": "About — Enrico Daga",
@@ -119,12 +127,12 @@ def build_pages(env: Environment):
             "interests":   read_md("research-interests.md"),
             "projects":    load_json("projects.json"),
             "tools":       load_json("tools.json"),
-            "bib_groups":  bib_groups,
+            "bib_groups":  bib["groups"],
         },
         "publications.html": {
             "title": "Publications — Enrico Daga",
             "description": "Full list of peer-reviewed publications by Enrico Daga.",
-            "pub_sections": pub_sections,
+            "publications": bib["all"],
         },
         "teaching.html": {
             "title": "Teaching & Supervision — Enrico Daga",
