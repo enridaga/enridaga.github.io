@@ -39,15 +39,21 @@ def load_json(filename: str) -> Union[list, dict]:
         return json.load(f)
 
 
-# Human-readable labels for BibTeX entry types
-ENTRYTYPE_LABELS = {
-    "article":       "Journal",
-    "inproceedings": "Conference",
-    "incollection":  "Chapter",
-    "proceedings":   "Proceedings",
-    "misc":          "Other",
-    "phdthesis":     "Thesis",
-}
+def get_type_label(entry: dict) -> str:
+    """
+    Map a BibTeX entry to one of three display categories:
+      Journal     — @article
+      Conference  — @inproceedings
+      Other       — everything else (workshop papers, book chapters, edited
+                    proceedings, special issues, abstracts, posters, demos,
+                    thesis, misc, etc.)
+    """
+    etype = entry.get("ENTRYTYPE", "misc").lower()
+    if etype == "article":
+        return "Journal"
+    if etype == "inproceedings":
+        return "Conference"
+    return "Other"
 
 
 def parse_bib(filename: str = "publications.bib") -> Dict:
@@ -56,8 +62,9 @@ def parse_bib(filename: str = "publications.bib") -> Dict:
       - 'all':    flat list of all entries sorted by year descending
       - 'groups': dict keyed by ENTRYTYPE, each a list sorted by year descending
     Each entry is augmented with:
-      - 'type_label': human-readable badge string
-      - 'is_featured': bool from featured = {true} field
+      - 'type_label':     one of Journal / Conference / Other
+      - 'is_featured':    bool from featured = {true} field
+      - 'is_under_review': bool from status = {under review} field
     """
     path = CONTENT / filename
     if not path.exists():
@@ -70,15 +77,15 @@ def parse_bib(filename: str = "publications.bib") -> Dict:
 
     entries = []
     for entry in bib_db.entries:
-        etype = entry.get("ENTRYTYPE", "misc").lower()
-        entry["type_label"] = ENTRYTYPE_LABELS.get(etype, "Other")
-        entry["is_featured"] = entry.get("featured", "").strip().lower() == "true"
+        entry["type_label"]      = get_type_label(entry)
+        entry["is_featured"]     = entry.get("featured", "").strip().lower() == "true"
+        entry["is_under_review"] = entry.get("status", "").strip().lower() == "under review"
         entries.append(entry)
 
     # Flat list sorted by year descending
     all_sorted = sorted(entries, key=lambda e: int(e.get("year", 0)), reverse=True)
 
-    # Grouped by type, each group sorted by year descending
+    # Grouped by ENTRYTYPE, each group sorted by year descending
     groups: Dict[str, List] = {}
     for entry in entries:
         etype = entry.get("ENTRYTYPE", "misc").lower()

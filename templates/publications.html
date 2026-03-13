@@ -91,15 +91,12 @@
   .abstract-toggle .toggle-arrow {
     display: inline-block;
     transition: transform 0.2s ease;
-    font-style: normal;
   }
   .abstract-toggle.open .toggle-arrow { transform: rotate(90deg); }
-
   .pub-abstract {
     display: none;
     margin-top: 0.75rem;
-    font-size: 0.83rem;
-    line-height: 1.7;
+    font-size: 0.83rem; line-height: 1.7;
     color: var(--ink-mid);
     border-left: 2px solid var(--rule);
     padding-left: 1rem;
@@ -118,11 +115,10 @@
     padding: 0.22rem 0.6rem; border-radius: 4px;
     white-space: nowrap;
   }
-  .badge-j     { background: var(--teal-subtle); color: var(--teal-deep); }
-  .badge-c     { background: #eef1fb; color: #3d5bbd; }
-  .badge-t     { background: #f3eefb; color: #6b3fa0; }
-  .badge-other { background: #f5f5f5; color: var(--ink-mid); }
-  .badge-featured { background: var(--warm); color: white; }
+  .badge-journal    { background: var(--teal-subtle); color: var(--teal-deep); }
+  .badge-conference { background: #eef1fb; color: #3d5bbd; }
+  .badge-other      { background: #f5f5f5; color: var(--ink-mid); }
+  .badge-featured   { background: var(--warm); color: white; }
 </style>
 {% endblock %}
 
@@ -140,8 +136,6 @@
     <button class="filter-btn filter-active" data-pub-filter="all">All</button>
     <button class="filter-btn" data-pub-filter="Journal">Journal</button>
     <button class="filter-btn" data-pub-filter="Conference">Conference</button>
-    <button class="filter-btn" data-pub-filter="Chapter">Chapter</button>
-    <button class="filter-btn" data-pub-filter="Thesis">Thesis</button>
     <button class="filter-btn" data-pub-filter="Other">Other</button>
     <button class="filter-btn" data-pub-filter="featured">★ Featured</button>
   </div>
@@ -150,8 +144,7 @@
   <div class="pub-list">
     {% for entry in publications %}
     <div class="pub-item {% if entry.is_featured %}featured{% endif %}"
-         data-pub-type="{{ entry.type_label }}"
-         data-featured="{{ 'true' if entry.is_featured else 'false' }}">
+         data-pub-type="{{ entry.type_label }}">
 
       <div class="pub-year">{{ entry.year }}</div>
 
@@ -184,9 +177,8 @@
         <span class="pub-badge badge-featured">Featured</span>
         {% endif %}
         <span class="pub-badge
-          {%- if entry.ENTRYTYPE == 'article' %} badge-j
-          {%- elif entry.ENTRYTYPE == 'inproceedings' %} badge-c
-          {%- elif entry.ENTRYTYPE == 'phdthesis' %} badge-t
+          {%- if entry.type_label == 'Journal' %} badge-journal
+          {%- elif entry.type_label == 'Conference' %} badge-conference
           {%- else %} badge-other{%- endif %}">
           {{ entry.type_label }}
         </span>
@@ -217,7 +209,7 @@
         if (filter === 'all') {
           item.style.display = '';
         } else if (filter === 'featured') {
-          item.style.display = item.dataset.featured === 'true' ? '' : 'none';
+          item.style.display = item.classList.contains('featured') ? '' : 'none';
         } else {
           item.style.display = item.dataset.pubType === filter ? '' : 'none';
         }
