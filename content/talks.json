@@ -1,42 +1,188 @@
 [
   {
-    "date": "2025-12-10",
+    "tag": "new",
+    "title": "ClimateSense consortium meeting in London",
+    "event": "ClimateSense project meeting, hosted by The Open University",
+    "location": "London, UK",
+    "date": "2026-03-13",
+    "slides": "https://climatesense-project.eu/news/posts/2026/03/13/london_meeting.html",
+    "video": ""
+  },
+  {
+    "tag": "role",
+    "title": "W3C Data Façades CG — meeting #5",
+    "event": "W3C Data Façades Community Group",
+    "location": "Online",
+    "date": "2026-03-09",
+    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "video": "",
+    "exclude_from_highlights": false
+  },
+  {
+    "tag": "role",
+    "title": "W3C Data Façades CG — meeting #4",
+    "event": "W3C Data Façades Community Group",
+    "location": "Online",
+    "date": "2026-02-09",
+    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "video": "",
+    "exclude_from_highlights": true
+  },
+  {
+    "tag": "role",
+    "title": "W3C Data Façades CG — meeting #3",
+    "event": "W3C Data Façades Community Group",
+    "location": "Online",
+    "date": "2026-01-12",
+    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "video": "",
+    "exclude_from_highlights": true
+  },
+  {
+    "tag": "role",
+    "title": "W3C Data Façades CG — meeting #2",
+    "event": "W3C Data Façades Community Group",
+    "location": "Online",
+    "date": "2025-12-01",
+    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "video": "",
+    "exclude_from_highlights": true
+  },
+  {
+    "tag": "role",
+    "title": "W3C Data Façades CG — meeting #1",
+    "event": "W3C Data Façades Community Group",
+    "location": "Online",
+    "date": "2025-10-27",
+    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "video": "",
+    "exclude_from_highlights": true
+  },
+  {
+    "tag": "talk",
+    "title": "Humanities Knowledge Graphs: opportunities and challenges with gen-AI",
+    "event": "Guest Lecture, Digital Humanities Research Centre, University of Groningen",
+    "location": "Groningen, Netherlands",
+    "date": "2026-03-04",
+    "slides": "https://www.rug.nl/research/icog/news/agenda/2026-03-04-enrico-daga-guest-lecture",
+    "video": ""
+  },
+  {
+    "tag": "talk",
     "title": "Humanities Knowledge Graphs: opportunities and challenges with gen-AI",
     "event": "Invited Seminar, University of Turin",
     "location": "Turin, Italy",
+    "date": "2025-12-10",
+    "slides": "https://www.dish.unito.it/it/eventi/humanities-knowledge-graphs-opportunities-and-challenges-gen-ai",
+    "video": "",
+    "exclude_from_highlights": true
+  },
+  {
+    "tag": "role",
+    "title": "Chair, W3C Data Façades Community Group",
+    "event": "W3C",
+    "location": "",
+    "date": "2025-09",
+    "slides": "https://www.w3.org/groups/cg/facade-x/",
+    "video": ""
+  },
+  {
+    "tag": "phd",
+    "title": "David Goddard passes his viva",
+    "event": "KMi, The Open University",
+    "location": "Milton Keynes, UK",
+    "date": "2025-06-03",
+    "slides": "https://kmi.open.ac.uk/news/article/1046",
+    "video": ""
+  },
+  {
+    "tag": "phd",
+    "title": "PhD completion: Paula Reyero-Lobo",
+    "event": "The Open University",
+    "location": "",
+    "date": "2025-06",
+    "slides": "https://kmi.open.ac.uk/news/article/977",
+    "video": ""
+  },
+  {
+    "tag": "role",
+    "title": "Visiting Professor, University of Turin",
+    "event": "Università di Torino, Master course AI",
+    "location": "Turin, Italy",
+    "date": "2024",
     "slides": "",
     "video": ""
   },
   {
-    "date": "2023-07-01",
-    "title": "Knowledge Organisation and the Semantic Web",
-    "event": "ISKO UK Conference (Keynote)",
+    "tag": "talk",
+    "title": "Invited panel member: Open Source for Business — Licensing, Investment and Business Models",
+    "event": "ZOOOM project final conference",
+    "location": "",
+    "date": "2024-09-27",
+    "slides": "",
+    "video": ""
+  },
+  {
+    "tag": "phd",
+    "title": "PhD completion: Dawn Kanter",
+    "event": "The Open University",
+    "location": "",
+    "date": "2024-04",
+    "slides": "",
+    "video": ""
+  },
+  {
+    "tag": "talk",
+    "title": "Citizen experiences in cultural heritage archives: a data journey",
+    "event": "7th Biennial ISKO UK Conference",
     "location": "Glasgow, UK",
-    "slides": "https://www.slideshare.net/enridaga",
+    "date": "2023-07-24",
+    "slides": "https://www.iskouk.org/conf2023/speakers",
     "video": ""
   },
   {
-    "date": "2022-05-15",
-    "title": "Smart Cities and Open Data: a Knowledge Graph perspective",
-    "event": "OECD Expert Interview — Smart City",
+    "tag": "talk",
+    "title": "The SPARQL Anything project",
+    "event": "Estes Park Group, Semantic Arts series",
     "location": "Online",
+    "date": "2023-05-04",
+    "slides": "",
+    "video": "https://www.youtube.com/@SemanticArtsInc"
+  },
+  {
+    "tag": "role",
+    "title": "Area Editor, Journal of Web Semantics (Elsevier)",
+    "event": "Journal of Web Semantics",
+    "location": "",
+    "date": "2023",
     "slides": "",
     "video": ""
   },
   {
-    "date": "2022-02-10",
-    "title": "SPARQL Anything: querying heterogeneous data with SPARQL",
+    "tag": "talk",
+    "title": "Interviewed as Smart City expert",
+    "event": "Organisation for Economic Co-operation and Development (OECD)",
+    "location": "",
+    "date": "2022-05-25",
+    "slides": "",
+    "video": ""
+  },
+  {
+    "tag": "talk",
+    "title": "Knowledge graph construction with a façade — The SPARQL Anything Project",
     "event": "W3C Knowledge Graph Construction Community Group",
     "location": "Online",
-    "slides": "https://www.slideshare.net/enridaga",
-    "video": ""
+    "date": "2022-02-14",
+    "slides": "https://www.slideshare.net/enricodaga/knowledge-graph-construction-with-afaade-the-sparql-anything-project",
+    "video": "https://www.youtube.com/watch?v=FEfpBDYd1Dg"
   },
   {
-    "date": "2020-01-15",
-    "title": "Knowledge Graphs for Cultural Heritage",
-    "event": "Keynote, Amity University",
-    "location": "India (Online)",
-    "slides": "https://www.slideshare.net/enridaga",
+    "tag": "role",
+    "title": "Co-chair, DARIAH AI and Music (AIM) Working Group",
+    "event": "DARIAH",
+    "location": "",
+    "date": "2019",
+    "slides": "https://ai-music.org",
     "video": ""
   }
 ]

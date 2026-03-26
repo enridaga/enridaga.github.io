@@ -4,14 +4,28 @@
     "description": "A unified framework for querying heterogeneous data formats using SPARQL — treating any data source as a virtual RDF graph via a façade pattern.",
     "url": "https://sparql.anything.cc",
     "github": "https://github.com/SPARQL-Anything/sparql.anything",
-    "publications": ["asprino2023knowledge"]
+    "publications": ["asprino2023knowledge", "warren2024path", "asprino2022materialisation"]
+  },
+  {
+    "name": "PySPARQL Anything",
+    "description": "A Python library for SPARQL Anything.",
+    "url": "https://sparql.anything.cc",
+    "github": "https://github.com/SPARQL-Anything/pysparql-anything",
+    "publications": ["ratta2024pysparql"]
+  },
+  {
+    "name": "SPICE Linked Data Hub",
+    "description": "A unified framework for querying heterogeneous data formats using SPARQL — treating any data source as a virtual RDF graph via a façade pattern.",
+    "url": "https://spice.kmi.open.ac.uk",
+    "github": "",
+    "publications": ["carvalho2024integrating", "daga2022integrating", "mulholland2020enabling"]
   },
   {
     "name": "data.open.ac.uk",
     "description": "The Open University's open knowledge graph — an institutional linked data platform powering student services and OpenLearn content discovery.",
     "url": "https://data.open.ac.uk",
     "github": "",
-    "publications": []
+    "publications": ["daga2016open"]
   },
   {
     "name": "BASIL",

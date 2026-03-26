@@ -12,6 +12,7 @@ from typing import Union, Dict, List
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import convert_to_unicode
 from jinja2 import Environment, FileSystemLoader
+from highlights import select_highlights
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 ROOT     = pathlib.Path(__file__).parent
@@ -79,7 +80,9 @@ def parse_bib(filename: str = "publications.bib") -> Dict:
     for entry in bib_db.entries:
         entry["type_label"]      = get_type_label(entry)
         entry["is_featured"]     = entry.get("featured", "").strip().lower() == "true"
-        entry["is_under_review"] = entry.get("status", "").strip().lower() == "under review"
+        status = entry.get("status", "").strip().lower()
+        entry["is_under_review"] = status == "under review"
+        entry["is_accepted"]     = status == "accepted"
         entries.append(entry)
 
     # Flat list sorted by year descending
@@ -119,7 +122,7 @@ def build_pages(env: Environment):
             "title": "Enrico Daga — Senior Research Fellow, The Open University",
             "description": "Personal academic website of Enrico Daga, Senior Research Fellow at the Knowledge Media Institute, The Open University.",
             "projects":   load_json("projects.json"),
-            "talks":      load_json("talks.json")[:5],
+            "talks":      select_highlights(load_json("talks.json")),
             "tools":      load_json("tools.json"),
             "bib_groups": bib["groups"],
         },
