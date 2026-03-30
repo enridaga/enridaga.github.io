@@ -5,67 +5,67 @@
     "event": "ClimateSense project meeting, hosted by The Open University",
     "location": "London, UK",
     "date": "2026-03-13",
-    "slides": "https://climatesense-project.eu/news/posts/2026/03/13/london_meeting.html",
+    "link": "https://climatesense-project.eu/news/posts/2026/03/13/london_meeting.html",
     "video": ""
   },
   {
-    "tag": "role",
+    "tag": "new",
     "title": "W3C Data Façades CG — meeting #5",
     "event": "W3C Data Façades Community Group",
     "location": "Online",
     "date": "2026-03-09",
-    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "link": "https://github.com/w3c-facade-x/meetings/tree/main/meetings/2026-03-09",
     "video": "",
     "exclude_from_highlights": false
   },
   {
-    "tag": "role",
+    "tag": "talk",
+    "title": "Humanities Knowledge Graphs: opportunities and challenges with gen-AI",
+    "event": "Invited Seminar, Digital Humnanities Research Centre, University of Groningen",
+    "location": "Groningen, Netherlands",
+    "date": "2026-03-04",
+    "link": "https://www.rug.nl/research/icog/news/agenda/2026-03-04-enrico-daga-guest-lecture",
+    "video": ""
+  },
+  {
+    "tag": "new",
     "title": "W3C Data Façades CG — meeting #4",
     "event": "W3C Data Façades Community Group",
     "location": "Online",
     "date": "2026-02-09",
-    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "link": "https://github.com/w3c-facade-x/meetings/tree/main/meetings/2026-02-09",
     "video": "",
     "exclude_from_highlights": true
   },
   {
-    "tag": "role",
+    "tag": "new",
     "title": "W3C Data Façades CG — meeting #3",
     "event": "W3C Data Façades Community Group",
     "location": "Online",
     "date": "2026-01-12",
-    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "link": "https://github.com/w3c-facade-x/meetings/tree/main/meetings/2026-01-12",
     "video": "",
     "exclude_from_highlights": true
   },
   {
-    "tag": "role",
+    "tag": "new",
     "title": "W3C Data Façades CG — meeting #2",
     "event": "W3C Data Façades Community Group",
     "location": "Online",
     "date": "2025-12-01",
-    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "link": "https://github.com/w3c-facade-x/meetings/tree/main/meetings/2025-12-01",
     "video": "",
     "exclude_from_highlights": true
   },
   {
-    "tag": "role",
+    "tag": "new",
     "title": "W3C Data Façades CG — meeting #1",
     "event": "W3C Data Façades Community Group",
     "location": "Online",
     "date": "2025-10-27",
-    "slides": "https://github.com/w3c-facade-x/meetings/tree/main/meetings",
+    "link": "https://github.com/w3c-facade-x/meetings/tree/main/meetings/2025-10-27",
     "video": "",
     "exclude_from_highlights": true
-  },
-  {
-    "tag": "talk",
-    "title": "Humanities Knowledge Graphs: opportunities and challenges with gen-AI",
-    "event": "Guest Lecture, Digital Humanities Research Centre, University of Groningen",
-    "location": "Groningen, Netherlands",
-    "date": "2026-03-04",
-    "slides": "https://www.rug.nl/research/icog/news/agenda/2026-03-04-enrico-daga-guest-lecture",
-    "video": ""
   },
   {
     "tag": "talk",
@@ -73,7 +73,7 @@
     "event": "Invited Seminar, University of Turin",
     "location": "Turin, Italy",
     "date": "2025-12-10",
-    "slides": "https://www.dish.unito.it/it/eventi/humanities-knowledge-graphs-opportunities-and-challenges-gen-ai",
+    "slides": "",
     "video": "",
     "exclude_from_highlights": true
   },
@@ -83,7 +83,25 @@
     "event": "W3C",
     "location": "",
     "date": "2025-09",
-    "slides": "https://www.w3.org/groups/cg/facade-x/",
+    "link": "https://www.w3.org/groups/cg/facade-x/",
+    "video": ""
+  },
+  {
+    "tag": "new",
+    "title": "ClimateSense project launched",
+    "event": "CHIST-ERA / EPSRC",
+    "location": "",
+    "date": "2025",
+    "link": "https://climatesense-project.eu/",
+    "video": ""
+  },
+  {
+    "tag": "new",
+    "title": "MultiPoD project launched",
+    "event": "Horizon Europe",
+    "location": "",
+    "date": "2025",
+    "link": "https://multipod-project.eu/",
     "video": ""
   },
   {
@@ -92,34 +110,34 @@
     "event": "KMi, The Open University",
     "location": "Milton Keynes, UK",
     "date": "2025-06-03",
-    "slides": "https://kmi.open.ac.uk/news/article/1046",
-    "video": ""
-  },
-  {
-    "tag": "phd",
-    "title": "PhD completion: Paula Reyero-Lobo",
-    "event": "The Open University",
-    "location": "",
-    "date": "2025-06",
-    "slides": "https://kmi.open.ac.uk/news/article/977",
+    "link": "https://kmi.open.ac.uk/news/article/1046",
     "video": ""
   },
   {
     "tag": "role",
     "title": "Visiting Professor, University of Turin",
-    "event": "Università di Torino, Master course AI",
+    "event": "Master course: Conceptual Modelling for the Semantic Web",
+    "location": "Turin, Italy",
+    "date": "2025",
+    "link": "https://magistrale.informatica.unito.it/do/corsi.pl/Show?_id=uub4",
+    "video": ""
+  },
+  {
+    "tag": "role",
+    "title": "Visiting Professor, University of Turin",
+    "event": "Master course: Conceptual Modelling for the Semantic Web",
     "location": "Turin, Italy",
     "date": "2024",
-    "slides": "",
+    "link": "https://magistrale.informatica.unito.it/do/storicocorsi.pl/Show?_id=uub4_2425",
     "video": ""
   },
   {
     "tag": "talk",
-    "title": "Invited panel member: Open Source for Business — Licensing, Investment and Business Models",
-    "event": "ZOOOM project final conference",
+    "title": "Invited panel member: Open Source for Business: Licensing, Investment and Business Models",
+    "event": "Final conference of the EU project ZOOOM: 3Os and IP awareness raising for collaborative ecosystems (ZOOOM) Grant Agreement No. 101070077",
     "location": "",
     "date": "2024-09-27",
-    "slides": "",
+    "link": "https://zooom4u.eu/index.php/events/final-conference/",
     "video": ""
   },
   {
@@ -128,7 +146,7 @@
     "event": "The Open University",
     "location": "",
     "date": "2024-04",
-    "slides": "",
+    "link": "https://oro.open.ac.uk/90503/",
     "video": ""
   },
   {
@@ -149,6 +167,16 @@
     "slides": "",
     "video": "https://www.youtube.com/@SemanticArtsInc"
   },
+
+  {
+    "tag": "talk",
+    "title": "Streamlining semantic data publishing with SPARQL Anything",
+    "event": "Chairs Paolo Manghi and Andrea Mannocci (ISTI-CNR) at the Open Science Graphs for FAIR Data Interest Group of the Research Data Alliance https://www.rd-alliance.org in the context of the International Data Week 2022 (Seoul, South Korea)",
+    "location": "Online",
+    "date": "2022-06-20",
+    "link": "https://www.rd-alliance.org/plenaries/rda-19th-plenary-meeting-part-international-data-week-20–23-june-2022-seoul-south-korea-7",
+    "video": ""
+  },
   {
     "tag": "role",
     "title": "Area Editor, Journal of Web Semantics (Elsevier)",
@@ -161,12 +189,21 @@
   {
     "tag": "talk",
     "title": "Interviewed as Smart City expert",
-    "event": "Organisation for Economic Co-operation and Development (OECD)",
+    "event": "Organisation for Economic Co-operation and Development (OECD), to inform a technical report for policy advisory about the design of SMART city programs in Japan",
     "location": "",
     "date": "2022-05-25",
     "slides": "",
     "video": ""
   },
+  {
+      "tag": "talk",
+      "title": "Capturing the Semantics of Themed Evidence",
+      "event": "NLP&DBpedia session at the DBpedia Day, held in conjunction with the SEMANTICS conference, Amsterdam, Netherlands",
+      "location": "online",
+      "date": "2021-09-08",
+      "slides": "https://www.slideshare.net/enricodaga/capturing-the-semantics-of-documentary-evidence-for-humanities-research"
+  },
+  
   {
     "tag": "talk",
     "title": "Knowledge graph construction with a façade — The SPARQL Anything Project",
@@ -182,7 +219,7 @@
     "event": "DARIAH",
     "location": "",
     "date": "2019",
-    "slides": "https://ai-music.org",
+    "link": "https://ai-music.org",
     "video": ""
   }
 ]

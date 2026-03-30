@@ -15,7 +15,7 @@
   },
   {
     "name": "SPICE Linked Data Hub",
-    "description": "A unified framework for querying heterogeneous data formats using SPARQL — treating any data source as a virtual RDF graph via a façade pattern.",
+    "description": "The SPICE Linked Data Hub forms part of the Linked Data infrastructure used within the wider SPICE project, an EU-H2020 funded project dedicated to citizen curation and cultural heritage.",
     "url": "https://spice.kmi.open.ac.uk",
     "github": "",
     "publications": ["carvalho2024integrating", "daga2022integrating", "mulholland2020enabling"]
@@ -32,13 +32,6 @@
     "description": "Build RESTful web APIs on top of SPARQL endpoints with minimal configuration — mapping HTTP requests to parameterised SPARQL queries.",
     "url": "",
     "github": "https://github.com/the-open-university/basil",
-    "publications": []
-  },
-  {
-    "name": "Apache Stanbol",
-    "description": "Contribution to the IKS project — a reusable set of semantic content management services for the web, now an Apache Software Foundation project.",
-    "url": "https://stanbol.apache.org",
-    "github": "",
-    "publications": []
+    "publications": ["daga2015basil"]
   }
 ]

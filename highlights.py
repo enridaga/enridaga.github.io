@@ -1,5 +1,5 @@
 """
-highlights.py — select homepage highlight entries from talks.json
+highlights.py — select homepage highlight entries from record.json
 
 Heuristic (configured via constants below):
   1. Exclude any entry with exclude_from_highlights == true
@@ -8,10 +8,10 @@ Heuristic (configured via constants below):
      plausibly fall within the window — a year-only date is treated as YYYY-07-01,
      a year-month date as YYYY-MM-15)
   3. From the remaining candidates, apply per-tag caps (most recent first):
-       new  → MAX_NEW
-       talk → MAX_TALK
-       role → MAX_ROLE
-       phd  → MAX_PHD
+       new  -> MAX_NEW
+       talk -> MAX_TALK
+       role -> MAX_ROLE
+       phd  -> MAX_PHD
   4. Merge the selected entries and sort by date descending
   5. Return at most MAX_TOTAL entries
 """
@@ -23,7 +23,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 
-# ── Configuration ────────────────────────────────────────────────────────────
+# -- Configuration ------------------------------------------------------------
 
 WINDOW_MONTHS: int = 18   # rolling look-back window
 MAX_NEW:   int = 3
@@ -33,7 +33,7 @@ MAX_PHD:   int = 1
 MAX_TOTAL: int = 6
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# -- Helpers ------------------------------------------------------------------
 
 def _parse_date(date_str: str) -> date:
     """
@@ -49,15 +49,15 @@ def _parse_date(date_str: str) -> date:
     return date(int(parts[0]), 7, 1)                    # mid-year
 
 
-def select_highlights(talks: list[dict], today: date | None = None) -> list[dict]:
+def select_highlights(news: list[dict], today: date | None = None) -> list[dict]:
     """
-    Given the full list of talk/highlight entries (loaded from talks.json),
+    Given the full list of news entries (loaded from news.json),
     return the ordered list of entries to display in the homepage highlights panel.
 
     Parameters
     ----------
-    talks : list[dict]
-        All entries from content/talks.json.
+    news : list[dict]
+        All entries from content/record.json.
     today : date, optional
         Override "today" for deterministic testing. Defaults to date.today().
 
@@ -71,14 +71,14 @@ def select_highlights(talks: list[dict], today: date | None = None) -> list[dict
 
     cutoff = today - timedelta(days=WINDOW_MONTHS * 30)
 
-    # Step 1 & 2 — filter out excluded entries and those outside the window
+    # Step 1 & 2 -- filter out excluded entries and those outside the window
     candidates = [
-        entry for entry in talks
+        entry for entry in news
         if not entry.get("exclude_from_highlights", False)
         and _parse_date(entry["date"]) >= cutoff
     ]
 
-    # Step 3 — sort candidates newest-first, then apply per-tag caps
+    # Step 3 -- sort candidates newest-first, then apply per-tag caps
     candidates.sort(key=lambda e: _parse_date(e["date"]), reverse=True)
 
     caps = {"new": MAX_NEW, "talk": MAX_TALK, "role": MAX_ROLE, "phd": MAX_PHD}
@@ -93,17 +93,17 @@ def select_highlights(talks: list[dict], today: date | None = None) -> list[dict
             selected.append(entry)
             counts[tag] += 1
 
-    # Step 4 & 5 — re-sort and cap total
+    # Step 4 & 5 -- re-sort and cap total
     selected.sort(key=lambda e: _parse_date(e["date"]), reverse=True)
     return selected[:MAX_TOTAL]
 
 
-# ── Standalone test ───────────────────────────────────────────────────────────
+# -- Standalone test ----------------------------------------------------------
 
 if __name__ == "__main__":
-    talks_path = Path(__file__).parent / "content" / "talks.json"
-    talks = json.loads(talks_path.read_text(encoding="utf-8"))
-    highlights = select_highlights(talks)
+    news_path = Path(__file__).parent / "content" / "record.json"
+    news = json.loads(news_path.read_text(encoding="utf-8"))
+    highlights = select_highlights(news)
     print(f"Selected {len(highlights)} highlight(s):\n")
     for h in highlights:
         print(f"  [{h['tag'].upper():4s}]  {h['date']}  {h['title']}")
