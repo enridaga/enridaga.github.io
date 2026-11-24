@@ -1,176 +1,118 @@
 """
-build.py — Static site builder for enrico.daga.net
-Reads content from content/, renders via Jinja2 templates, writes to _site/.
+build.py — static site builder.
+
+Content lives in content/:
+  site.json        name, position, links, photo
+  bio.md           short biography / research statement
+  projects.json    projects and software (logo files in assets/logos/, optional)
+  notice.md        optional one-line notice (empty = hidden)
+  publications.bib all publications (BibTeX)
+
+Output: _site/index.html, _site/publications.html
 """
 
+import datetime as dt
 import json
-import shutil
 import pathlib
+import re
+import shutil
+import struct
+
 import markdown
-import bibtexparser
-from typing import Union, Dict, List
-from bibtexparser.bparser import BibTexParser
-from bibtexparser.customization import convert_to_unicode
-from jinja2 import Environment, FileSystemLoader
-from highlights import select_highlights
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup
 
-# ── Paths ──────────────────────────────────────────────────────────────────
-ROOT     = pathlib.Path(__file__).parent
-CONTENT  = ROOT / "content"
-TEMPLATES= ROOT / "templates"
-ASSETS   = ROOT / "assets"
-SITE     = ROOT / "_site"
+import publications
 
-# ── Helpers ────────────────────────────────────────────────────────────────
-
-def read_md(filename: str) -> str:
-    """Render a Markdown file from content/ to an HTML string."""
-    path = CONTENT / filename
-    if not path.exists():
-        return ""
-    return markdown.markdown(path.read_text(encoding="utf-8"), extensions=["extra"])
+ROOT = pathlib.Path(__file__).parent
+CONTENT = ROOT / "content"
+TEMPLATES = ROOT / "templates"
+ASSETS = ROOT / "assets"
+SITE = ROOT / "_site"
 
 
-def load_json(filename: str) -> Union[list, dict]:
-    """Load a JSON file from content/."""
-    path = CONTENT / filename
-    if not path.exists():
-        return []
-    with path.open(encoding="utf-8") as f:
-        return json.load(f)
+def md(name: str, inline: bool = False) -> Markup:
+    path = CONTENT / name
+    text = path.read_text(encoding="utf-8") if path.exists() else ""
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.S).strip()
+    if not text:
+        return Markup("")
+    html = markdown.markdown(text, extensions=["extra"])
+    if inline:
+        html = re.sub(r"^<p>(.*)</p>$", r"\1", html, flags=re.S)
+    return Markup(html)
 
 
-def get_type_label(entry: dict) -> str:
-    """
-    Map a BibTeX entry to one of three display categories:
-      Journal     — @article
-      Conference  — @inproceedings
-      Other       — everything else (workshop papers, book chapters, edited
-                    proceedings, special issues, abstracts, posters, demos,
-                    thesis, misc, etc.)
-    """
-    etype = entry.get("ENTRYTYPE", "misc").lower()
-    if etype == "article":
-        return "Journal"
-    if etype == "inproceedings":
-        return "Conference"
-    return "Other"
+# Logos get roughly the same visual area, within a height and width cap.
+LOGO_AREA = 3400      # px²
+LOGO_MAX_H = 46       # px
+LOGO_MAX_W = 140      # px
 
 
-def parse_bib(filename: str = "publications.bib") -> Dict:
-    """
-    Parse a BibTeX file and return:
-      - 'all':    flat list of all entries sorted by year descending
-      - 'groups': dict keyed by ENTRYTYPE, each a list sorted by year descending
-    Each entry is augmented with:
-      - 'type_label':     one of Journal / Conference / Other
-      - 'is_featured':    bool from featured = {true} field
-      - 'is_under_review': bool from status = {under review} field
-    """
-    path = CONTENT / filename
-    if not path.exists():
-        return {"all": [], "groups": {}}
-
-    parser = BibTexParser(common_strings=True)
-    parser.customization = convert_to_unicode
-    with path.open(encoding="utf-8") as f:
-        bib_db = bibtexparser.load(f, parser=parser)
-
-    entries = []
-    for entry in bib_db.entries:
-        entry["type_label"]      = get_type_label(entry)
-        entry["is_featured"]     = entry.get("featured", "").strip().lower() == "true"
-        status = entry.get("status", "").strip().lower()
-        entry["is_under_review"] = status == "under review"
-        entry["is_accepted"]     = status == "accepted"
-        entries.append(entry)
-
-    # Flat list sorted by year descending
-    all_sorted = sorted(entries, key=lambda e: int(e.get("year", 0)), reverse=True)
-
-    # Grouped by ENTRYTYPE, each group sorted by year descending
-    groups: Dict[str, List] = {}
-    for entry in entries:
-        etype = entry.get("ENTRYTYPE", "misc").lower()
-        groups.setdefault(etype, []).append(entry)
-    for etype in groups:
-        groups[etype].sort(key=lambda e: int(e.get("year", 0)), reverse=True)
-
-    return {"all": all_sorted, "groups": groups}
+def image_size(path: pathlib.Path):
+    head = path.read_bytes()[:4096]
+    if head[:8] == b"\x89PNG\r\n\x1a\n":
+        return struct.unpack(">II", head[16:24])
+    if path.suffix.lower() == ".svg":
+        txt = path.read_text(encoding="utf-8", errors="replace")
+        m = re.search(r'viewBox="\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)', txt)
+        if m:
+            return float(m.group(1)), float(m.group(2))
+    return None
 
 
-# ── Build ──────────────────────────────────────────────────────────────────
+def logo_box(path: pathlib.Path, scale: float = 1.0):
+    size = image_size(path)
+    if not size or not size[1]:
+        return None, None
+    ratio = size[0] / size[1]
+    h = min((LOGO_AREA * scale ** 2 / ratio) ** 0.5, LOGO_MAX_H * scale)
+    w = h * ratio
+    if w > LOGO_MAX_W:
+        w, h = LOGO_MAX_W, LOGO_MAX_W / ratio
+    return round(w), round(h)
 
-def clean():
+
+def load_json(name: str):
+    return json.loads((CONTENT / name).read_text(encoding="utf-8"))
+
+
+def main() -> None:
     if SITE.exists():
         shutil.rmtree(SITE)
-    SITE.mkdir()
-    print("✓ Cleaned _site/")
+    shutil.copytree(ASSETS, SITE / "assets")
 
+    site = load_json("site.json")
+    site["links"] = [l for l in site.get("links", []) if l.get("url")]
+    if site.get("photo") and not (ROOT / site["photo"]).exists():
+        site["photo"] = ""
 
-def copy_assets():
-    dest = SITE / "assets"
-    shutil.copytree(ASSETS, dest)
-    print("✓ Copied assets/")
+    projects = load_json("projects.json")
+    for p in projects:
+        if p.get("logo") and not (ROOT / p["logo"]).exists():
+            p["logo"] = ""          # falls back to the name as text
+        if p.get("logo"):
+            p["logo_w"], p["logo_h"] = logo_box(ROOT / p["logo"], p.get("scale", 1.0))
 
+    pubs = publications.load()
 
-def build_pages(env: Environment):
-    bib = parse_bib()
-
-    pages = {
-        "index.html": {
-            "title": "Enrico Daga — Senior Research Fellow, The Open University",
-            "description": "Personal academic website of Enrico Daga, Senior Research Fellow at the Knowledge Media Institute, The Open University.",
-            "projects":   load_json("projects.json"),
-            "news":       select_highlights(load_json("record.json")),
-            "tools":      load_json("tools.json"),
-            "bib_groups": bib["groups"],
-        },
-        "about.html": {
-            "title": "About — Enrico Daga",
-            "description": "Biography and background of Enrico Daga.",
-            "content": read_md("about.md"),
-        },
-        "research.html": {
-            "title": "Research — Enrico Daga",
-            "description": "Research interests, projects, and software tools.",
-            "interests":   read_md("research-interests.md"),
-            "projects":    load_json("projects.json"),
-            "tools":       load_json("tools.json"),
-            "bib_groups":  bib["groups"],
-        },
-        "publications.html": {
-            "title": "Publications — Enrico Daga",
-            "description": "Full list of peer-reviewed publications by Enrico Daga.",
-            "publications": bib["all"],
-        },
-        "service.html": {
-            "title": "Community & Service — Enrico Daga",
-            "description": "Academic service, PhD supervision, invited talks, and community roles.",
-            "supervision": read_md("supervision.md"),
-            "service":     read_md("service.md"),
-            "records":     load_json("record.json"),
-        },
-        "contact.html": {
-            "title": "Contact — Enrico Daga",
-            "description": "Contact information and collaboration enquiries.",
-            "content": read_md("contact.md"),
-        },
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES)),
+                      autoescape=select_autoescape(["html"]),
+                      trim_blocks=True, lstrip_blocks=True)
+    ctx = {
+        "site": site,
+        "me": set(site.get("me", [])),
+        "bio": md("bio.md"),
+        "notice": md("notice.md", inline=True),
+        "projects": projects,
+        "pubs": pubs,
+        "recent": pubs[: site.get("home_publications", 8)],
+        "today": dt.date.today(),
     }
-
-    for filename, ctx in pages.items():
-        tmpl = env.get_template(filename)
-        html = tmpl.render(**ctx)
-        (SITE / filename).write_text(html, encoding="utf-8")
-        print(f"✓ Built {filename}")
-
-
-def main():
-    clean()
-    copy_assets()
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=True)
-    build_pages(env)
-    print("\n✅ Site built → _site/")
+    for page in ("index.html", "publications.html"):
+        (SITE / page).write_text(env.get_template(page).render(**ctx), encoding="utf-8")
+        print(f"✓ {page}")
+    print(f"✓ {len(pubs)} publications, {len(projects)} projects → _site/")
 
 
 if __name__ == "__main__":

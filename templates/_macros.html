@@ -1,0 +1,26 @@
+{% macro names(list, me) -%}
+{%- for a in list[:12] -%}
+{%- if a in me %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% if not loop.last %}, {% endif -%}
+{%- endfor %}{% if list|length > 12 %}, et al.{% endif -%}
+{%- endmacro %}
+
+{% macro pub(p, me, show_year=true) -%}
+<li>
+  {%- if p.authors %}{{ names(p.authors, me) }}{% elif p.editors %}{{ names(p.editors, me) }} (eds.){% endif -%}
+  {%- if show_year %} ({{ p.year }}){% endif %}.
+  <span class="ti">{{ p.title }}</span>.
+  {% if p.status == "under review" %}<span class="ve">Under review.</span>
+  {% elif p.venue %}<span class="ve"><i>{{ p.venue }}</i>
+    {%- if p.volume %} {{ p.volume }}{% if p.number %}({{ p.number }}){% endif %}{% endif -%}
+    {%- if p.pages %}: {{ p.pages }}{% endif -%}
+    {%- if p.status == "accepted" %} (accepted){% endif %}.</span>
+  {% endif %}
+  {%- set links = [] -%}
+  {%- if p.doi %}{% set _ = links.append(("DOI", "https://doi.org/" ~ p.doi)) %}{% elif p.url %}{% set _ = links.append(("Link", p.url)) %}{% endif -%}
+  {%- if p.oa %}{% set _ = links.append(("ORO", p.oa)) %}{% endif -%}
+  {%- if p.arxiv %}{% set _ = links.append(("arXiv", p.arxiv)) %}{% endif -%}
+  {%- if links %}
+  <span class="lk">{% for label, href in links %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</span>
+  {%- endif %}
+</li>
+{%- endmacro %}
